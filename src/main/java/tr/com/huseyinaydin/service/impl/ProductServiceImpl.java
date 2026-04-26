@@ -51,4 +51,9 @@ public class ProductServiceImpl implements ProductService {
     public List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByFalse(int id) {
         return productRepository.getProductAdvertListByEmployeeAsyncByFalse(id);
     }
+
+    @Override
+    public List<ResultProductWithCategoryDto> getLast5ProductAsync() {
+        return productRepository.getLast5ProductAsync();
+    }
 }

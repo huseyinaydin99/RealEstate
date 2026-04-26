@@ -31,4 +31,11 @@
     <select id="getProductAdvertListByEmployeeAsyncByFalse" resultType="tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto">
         Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID where AppUserId=#{id} And ProductStatus=0
     </select>
+    <select id="getLast5ProductAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay, ProductStatus, SlugUrl
+        From Product inner join Category on Product.ProductCategory=Category.CategoryID
+        where ProductStatus=1
+        Order By ProductID Desc
+        Limit 5
+    </select>
 </mapper>

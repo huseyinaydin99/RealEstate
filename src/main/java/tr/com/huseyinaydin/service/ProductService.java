@@ -14,4 +14,5 @@ public interface ProductService {
     void productStatusChangeToFalse(int id);
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByTrue(int id);
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByFalse(int id);
+    List<ResultProductWithCategoryDto> getLast5ProductAsync();
 }

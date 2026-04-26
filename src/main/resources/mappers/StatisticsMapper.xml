@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.StatisticsRepository">
+    <select id="activeCategoryCount" resultType="int">
+        SELECT COUNT(*) FROM Category WHERE CategoryStatus = 1
+    </select>
+    <select id="activeEmployeeCount" resultType="int">
+        SELECT COUNT(*) FROM AppUser
+    </select>
+    <select id="apartmentCount" resultType="int">
+        SELECT COUNT(*) FROM Product WHERE Title LIKE '%Daire%'
+    </select>
+    <select id="averageProductPriceByRent" resultType="java.math.BigDecimal">
+        SELECT AVG(Price) FROM Product WHERE Type = 'Kiralık'
+    </select>
+    <select id="averageProductPriceBySale" resultType="java.math.BigDecimal">
+        SELECT AVG(Price) FROM Product WHERE Type = 'Satılık'
+    </select>
+    <select id="averageRoomCount" resultType="int">
+        SELECT COALESCE(AVG(RoomCount), 0) FROM ProductDetails
+    </select>
+    <select id="categoryCount" resultType="int">
+        SELECT COUNT(*) FROM Category
+    </select>
+    <select id="categoryNameByMaxProductCount" resultType="string">
+        SELECT CategoryName FROM Product 
+        INNER JOIN Category ON Product.ProductCategory = Category.CategoryID 
+        GROUP BY CategoryName 
+        ORDER BY COUNT(*) DESC 
+        LIMIT 1
+    </select>
+    <select id="cityNameByMaxProductCount" resultType="string">
+        SELECT City FROM Product 
+        GROUP BY City 
+        ORDER BY COUNT(*) DESC 
+        LIMIT 1
+    </select>
+    <select id="differentCityCount" resultType="int">
+        SELECT COUNT(DISTINCT City) FROM Product
+    </select>
+    <select id="employeeNameByMaxProductCount" resultType="string">
+        SELECT Name FROM Product 
+        INNER JOIN AppUser ON Product.AppUserId = AppUser.UserId 
+        GROUP BY Name 
+        ORDER BY COUNT(*) DESC 
+        LIMIT 1
+    </select>
+    <select id="lastProductPrice" resultType="java.math.BigDecimal">
+        SELECT Price FROM Product ORDER BY ProductID DESC LIMIT 1
+    </select>
+    <select id="newestBuildingYear" resultType="string">
+        SELECT BuildYear FROM ProductDetails ORDER BY BuildYear DESC LIMIT 1
+    </select>
+    <select id="oldestBuildingYear" resultType="string">
+        SELECT BuildYear FROM ProductDetails ORDER BY BuildYear ASC LIMIT 1
+    </select>
+    <select id="passiveCategoryCount" resultType="int">
+        SELECT COUNT(*) FROM Category WHERE CategoryStatus = 0
+    </select>
+    <select id="productCount" resultType="int">
+        SELECT COUNT(*) FROM Product
+    </select>
+</mapper>

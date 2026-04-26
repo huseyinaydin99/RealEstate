@@ -43,4 +43,9 @@ public class ProductsController {
         productService.productStatusChangeToFalse(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/last5")
+    public ResponseEntity<List<ResultProductWithCategoryDto>> last5ProductList() {
+        return ResponseEntity.ok(productService.getLast5ProductAsync());
+    }
 }

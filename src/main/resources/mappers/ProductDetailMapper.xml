@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.ProductDetailRepository">
+    <select id="getProductDetailByProductId" resultType="tr.com.huseyinaydin.dto.productdetail.GetProductDetailByIdDto">
+        SELECT * FROM ProductDetails WHERE ProductID = #{productId}
+    </select>
+</mapper>
