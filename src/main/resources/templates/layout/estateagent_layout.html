@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="sidebar pe-4 pb-3" th:fragment="sidebar">
+        <nav class="navbar bg-light navbar-light">
+            <a th:href="@{/estateagent/dashboard}" class="navbar-brand mx-4 mb-3">
+                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Real Estate</h3>
+            </a>
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" th:src="${#authentication.principal.imageUrl != null ? #authentication.principal.imageUrl : '/user.png'}" alt="" style="width: 40px; height: 40px;">
+                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0">Emlakçı Paneli</h6>
+                    <span sec:authentication="name">Kullanıcı</span>
+                </div>
+            </div>
+            <div class="navbar-nav w-100">
+                <a th:href="@{/estateagent/dashboard}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <a th:href="@{/estateagent/myadverts/active}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>İlanlarım</a>
+                <a th:href="@{/estateagent/myadverts/passive}" class="nav-item nav-link"><i class="fa fa-list me-2"></i>Pasif İlanlar</a>
+                <a th:href="@{/estateagent/messages/inbox}" class="nav-item nav-link"><i class="fa fa-inbox me-2"></i>Gelen Kutusu</a>
+                <a th:href="@{/estateagent/messages/sendbox}" class="nav-item nav-link"><i class="fa fa-paper-plane me-2"></i>Giden Mesajlar</a>
+                <a th:href="@{/logout}" class="nav-item nav-link"><i class="fa fa-times me-2"></i>Çıkış Yap</a>
+            </div>
+        </nav>
+    </div>
+
+    <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0" th:fragment="navbar">
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="navbar-nav align-items-center ms-auto">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <img class="rounded-circle me-lg-2" th:src="${#authentication.principal.imageUrl != null ? #authentication.principal.imageUrl : '/user.png'}" alt="" style="width: 40px; height: 40px;">
+                    <span class="d-none d-lg-inline-flex" sec:authentication="name">Kullanıcı</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                    <a th:href="@{/logout}" class="dropdown-item">Çıkış Yap</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tr.com.huseyinaydin.business.rules.ProductBusinessRules;
 import tr.com.huseyinaydin.dto.product.CreateProductDto;
+import tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto;
 import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
 import tr.com.huseyinaydin.repository.ProductRepository;
 import tr.com.huseyinaydin.service.ProductService;
@@ -39,5 +40,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void productStatusChangeToFalse(int id) {
         productRepository.productStatusChangeToFalse(id);
+    }
+
+    @Override
+    public List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByTrue(int id) {
+        return productRepository.getProductAdvertListByEmployeeAsyncByTrue(id);
+    }
+
+    @Override
+    public List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByFalse(int id) {
+        return productRepository.getProductAdvertListByEmployeeAsyncByFalse(id);
     }
 }

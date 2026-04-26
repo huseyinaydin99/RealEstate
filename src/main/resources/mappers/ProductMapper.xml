@@ -25,4 +25,10 @@
     <update id="productStatusChangeToFalse" parameterType="int">
         Update Product set ProductStatus=0 where ProductID=#{id}
     </update>
+    <select id="getProductAdvertListByEmployeeAsyncByTrue" resultType="tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID where AppUserId=#{id} And ProductStatus=1
+    </select>
+    <select id="getProductAdvertListByEmployeeAsyncByFalse" resultType="tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID where AppUserId=#{id} And ProductStatus=0
+    </select>
 </mapper>

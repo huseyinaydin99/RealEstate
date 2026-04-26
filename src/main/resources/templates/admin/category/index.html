@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Kategori Listesi</h6>
+                        <a th:href="@{/admin/categories/create}" class="btn btn-primary">Yeni Kategori Ekle</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Kategori Adı</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Sil</th>
+                                    <th scope="col">Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="category : ${categories}">
+                                    <td th:text="${category.categoryID}"></td>
+                                    <td th:text="${category.categoryName}"></td>
+                                    <td>
+                                        <span th:if="${category.categoryStatus}" class="badge bg-success">Aktif</span>
+                                        <span th:unless="${category.categoryStatus}" class="badge bg-danger">Pasif</span>
+                                    </td>
+                                    <td><a th:href="@{/admin/categories/delete/{id}(id=${category.categoryID})}" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a th:href="@{/admin/categories/update/{id}(id=${category.categoryID})}" class="btn btn-outline-success">Güncelle</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>
