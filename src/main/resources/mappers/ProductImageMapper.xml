@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.ProductImageMapper">
+
+    <select id="getProductImageByProductId" resultType="tr.com.huseyinaydin.dto.productimage.GetProductImageByProductIdDto">
+        SELECT * FROM ProductImage WHERE ProductId = #{id}
+    </select>
+
+    <select id="getAllProductImages" resultType="tr.com.huseyinaydin.dto.productimage.ResultProductImageDto">
+        SELECT pi.*, p.Title, p.City FROM ProductImage pi
+        INNER JOIN Product p ON pi.ProductId = p.ProductID
+    </select>
+
+    <insert id="createProductImage">
+        INSERT INTO ProductImage (ImageUrl, ProductId)
+        VALUES (#{imageUrl}, #{productId})
+    </insert>
+
+    <delete id="deleteProductImage">
+        DELETE FROM ProductImage WHERE ProductImageId = #{id}
+    </delete>
+
+    <select id="getImageUrl" resultType="string">
+        SELECT ImageUrl FROM ProductImage WHERE ProductImageId = #{id}
+    </select>
+
+    <select id="getAllProductImagesByAppUserId" resultType="tr.com.huseyinaydin.dto.productimage.ResultProductImageDto">
+        SELECT pi.*, p.Title, p.City FROM ProductImage pi
+        INNER JOIN Product p ON pi.ProductId = p.ProductID
+        INNER JOIN AppUser au ON au.UserId = p.AppUserId
+        WHERE p.AppUserId = #{id}
+    </select>
+
+</mapper>
