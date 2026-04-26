@@ -18,7 +18,28 @@
         INSERT INTO AppUser (Name, UserName, Password, UserRole, Email, PhoneNumber, UserImageUrl)
         VALUES (#{name}, #{userName}, #{password}, #{userRole}, #{email}, #{phoneNumber}, #{userImageUrl})
     </insert>
+
+    <update id="updateAppUser">
+        UPDATE AppUser SET
+            Name = #{name},
+            UserName = #{userName},
+            Password = #{password},
+            UserRole = #{userRole},
+            Email = #{email},
+            PhoneNumber = #{phoneNumber},
+            UserImageUrl = #{userImageUrl}
+        WHERE UserId = #{userId}
+    </update>
+
     <select id="findByUserId" resultType="tr.com.huseyinaydin.model.AppUser">
         SELECT * FROM AppUser WHERE UserId = #{userId}
+    </select>
+
+    <select id="getRoleIdByRoleName" resultType="java.lang.Integer">
+        SELECT RoleId FROM AppRole WHERE RoleName = #{roleName}
+    </select>
+
+    <select id="findByUserName" resultType="tr.com.huseyinaydin.model.AppUser">
+        SELECT * FROM AppUser WHERE UserName = #{username}
     </select>
 </mapper>

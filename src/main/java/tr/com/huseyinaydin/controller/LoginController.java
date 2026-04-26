@@ -3,12 +3,14 @@ package tr.com.huseyinaydin.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tr.com.huseyinaydin.dto.appuser.CreateAppUserDto;
 import tr.com.huseyinaydin.dto.login.LoginRequestDto;
 import tr.com.huseyinaydin.dto.login.LoginResponseDto;
 import tr.com.huseyinaydin.model.AppRole;
 import tr.com.huseyinaydin.model.AppUser;
 import tr.com.huseyinaydin.repository.AppUserRepository;
 import tr.com.huseyinaydin.security.JwtTokenGenerator;
+import tr.com.huseyinaydin.service.AppUserService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,9 +19,9 @@ import java.util.Map;
 @RequestMapping("/api/Login")
 @RequiredArgsConstructor
 public class LoginController {
-
     private final AppUserRepository appUserRepository;
     private final JwtTokenGenerator jwtTokenGenerator;
+    private final AppUserService appUserService;
 
     @PostMapping
     public ResponseEntity<?> signIn(@RequestBody LoginRequestDto loginDto) {
@@ -29,7 +31,7 @@ public class LoginController {
             AppRole role = appUserRepository.findRoleByUserId(user.getUserId());
 
             if (role != null) {
-                String token = jwtTokenGenerator.generateToken(user.getUserId(), user.getUserName(), role.getRoleName());
+                String token = jwtTokenGenerator.generateToken(user.getUserId(), user.getUserName(), role.getRoleName(), user.getName(), user.getEmail(), user.getUserImageUrl());
                 String redirectUrl = "";
 
                 if (role.getRoleName().equals("Admin")) {
@@ -47,6 +49,18 @@ public class LoginController {
         } else {
             return ResponseEntity.ok("Başarısız");
         }
+    }
+
+    @PostMapping("/Register")
+    public ResponseEntity<?> register(@RequestBody CreateAppUserDto createAppUserDto) {
+        if (createAppUserDto.getUserRole() == 0) {
+            Integer roleId = appUserRepository.getRoleIdByRoleName("Member");
+            if (roleId != null) {
+                createAppUserDto.setUserRole(roleId);
+            }
+        }
+        appUserService.register(createAppUserDto);
+        return ResponseEntity.ok("Kayıt başarılı.");
     }
 
     @PostMapping("/Logout")

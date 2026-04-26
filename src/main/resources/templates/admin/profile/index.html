@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/admin_layout}">
+<body>
+<div layout:fragment="content">
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Profil Bilgilerim</h6>
+                    <form th:action="@{/Profile/Update}" th:object="${profile}" method="post">
+                        <input type="hidden" th:field="*{userId}" />
+                        <input type="hidden" th:field="*{userRole}" />
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Adı</label>
+                            <input type="text" th:field="*{name}" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Kullanıcı Adı</label>
+                            <input type="text" th:field="*{userName}" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Şifre</label>
+                            <input type="text" th:field="*{password}" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">E-Mail</label>
+                            <input type="email" th:field="*{email}" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Telefon Numarası</label>
+                            <input type="tel" th:field="*{phoneNumber}" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Görsel Url</label>
+                            <input type="text" th:field="*{userImageUrl}" class="form-control" />
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Bilgilerimi Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

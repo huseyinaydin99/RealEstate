@@ -14,12 +14,14 @@ import java.util.Map;
 @Component
 public class JwtTokenGenerator {
 
-    public String generateToken(Integer id, String username, String role) {
+    public String generateToken(Integer id, String username, String role, String name, String email, String imageUrl) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", id);
         claims.put("role", role);
         claims.put("username", username);
-
+        claims.put("name", name);
+        claims.put("email", email);
+        claims.put("imageUrl", imageUrl);
         long expirationTimeInMs = JwtTokenDefaults.EXPIRE * 60 * 1000L;
         
         Key key = Keys.hmacShaKeyFor(JwtTokenDefaults.KEY.getBytes(StandardCharsets.UTF_8));
