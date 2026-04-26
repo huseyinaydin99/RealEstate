@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.AddressRepository">
+    <select id="getAllAddress" resultType="tr.com.huseyinaydin.dto.address.ResultAddressDto">
+        Select * From Address
+    </select>
+    <update id="updateAddress" parameterType="tr.com.huseyinaydin.dto.address.UpdateAddressDto">
+        Update Address Set AddressTitle1=#{addressTitle1}, Description=#{description}, AddressTitle2=#{addressTitle2}, Phone1=#{phone1}, Phone2=#{phone2}, Email=#{email}, Location=#{location} where AddressID=#{addressID}
+    </update>
+    <select id="getAddress" parameterType="int" resultType="tr.com.huseyinaydin.dto.address.ResultAddressDto">
+        Select * From Address where AddressID=#{id}
+    </select>
+</mapper>

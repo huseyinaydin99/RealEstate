@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.ContactRepository">
+    <select id="getAllContact" resultType="tr.com.huseyinaydin.dto.contact.ResultContactDto">
+        Select * From Contact
+    </select>
+    <insert id="createContact" parameterType="tr.com.huseyinaydin.dto.contact.CreateContactDto">
+        insert into Contact (Name, Subject, Email, Message, SendDate) values (#{name}, #{subject}, #{email}, #{message}, #{sendDate})
+    </insert>
+    <delete id="deleteContact" parameterType="int">
+        Delete From Contact where ContactID=#{id}
+    </delete>
+    <select id="getContact" parameterType="int" resultType="tr.com.huseyinaydin.dto.contact.ResultContactDto">
+        Select * From Contact where ContactID=#{id}
+    </select>
+    <select id="getLast4Contact" resultType="tr.com.huseyinaydin.dto.contact.ResultContactDto">
+        Select * From Contact Order By ContactID Desc Limit 4
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.BottomGridRepository">
+    <select id="getAllBottomGrid" resultType="tr.com.huseyinaydin.dto.bottomgrid.ResultBottomGridDto">
+        Select * From BottomGrid
+    </select>
+    <insert id="createBottomGrid" parameterType="tr.com.huseyinaydin.dto.bottomgrid.CreateBottomGridDto">
+        insert into BottomGrid (Icon, Title, Description) values (#{icon}, #{title}, #{description})
+    </insert>
+    <delete id="deleteBottomGrid" parameterType="int">
+        Delete From BottomGrid where BottomGridID=#{id}
+    </delete>
+    <select id="getBottomGrid" parameterType="int" resultType="tr.com.huseyinaydin.dto.bottomgrid.ResultBottomGridDto">
+        Select * From BottomGrid where BottomGridID=#{id}
+    </select>
+</mapper>
