@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
-
     private final CategoryRepository categoryRepository;
 
     @Override
@@ -27,8 +26,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCategory(int id) {
-        categoryRepository.deleteCategory(id);
+    public void deleteCategory(int categoryId) {
+        categoryRepository.deleteCategory(categoryId);
     }
 
     @Override
@@ -37,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public ResultCategoryDto getCategory(int id) {
-        return categoryRepository.getCategory(id);
+    public ResultCategoryDto getCategory(int categoryId) {
+        return categoryRepository.getCategory(categoryId);
     }
 }

@@ -3,29 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tr.com.huseyinaydin.repository.CategoryRepository">
-
     <select id="getAllCategory" resultType="tr.com.huseyinaydin.dto.category.ResultCategoryDto">
-        SELECT * FROM Category
+        Select * From Category
     </select>
 
     <insert id="createCategory" parameterType="tr.com.huseyinaydin.dto.category.CreateCategoryDto">
-        INSERT INTO Category (CategoryName, CategoryStatus)
-        VALUES (#{categoryName}, 1)
+        insert into Category (CategoryName, CategoryStatus) values (#{categoryName}, #{categoryStatus})
     </insert>
 
     <delete id="deleteCategory" parameterType="int">
-        DELETE FROM Category WHERE CategoryID = #{id}
+        Delete From Category Where CategoryID=#{categoryId}
     </delete>
 
     <update id="updateCategory" parameterType="tr.com.huseyinaydin.dto.category.UpdateCategoryDto">
-        UPDATE Category
-        SET CategoryName = #{categoryName},
-            CategoryStatus = #{categoryStatus}
-        WHERE CategoryID = #{categoryID}
+        Update Category Set CategoryName=#{categoryName}, CategoryStatus=#{categoryStatus} where CategoryID=#{categoryID}
     </update>
 
     <select id="getCategory" parameterType="int" resultType="tr.com.huseyinaydin.dto.category.ResultCategoryDto">
-        SELECT * FROM Category WHERE CategoryID = #{id}
+        Select * From Category Where CategoryID=#{categoryId}
     </select>
-
 </mapper>

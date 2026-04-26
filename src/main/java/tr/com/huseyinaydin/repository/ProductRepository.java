@@ -8,9 +8,9 @@ import java.util.List;
 
 @Mapper
 public interface ProductRepository {
-    List<ResultProductDto> getAllProduct();
-    List<ResultProductWithCategoryDto> getAllProductWithCategory();
-    void productDealOfTheDayStatusChangeToTrue(int id);
+    List<ResultProductDto> getAllProductAsync();
+    List<ResultProductWithCategoryDto> getAllProductWithCategoryAsync();
     void productDealOfTheDayStatusChangeToFalse(int id);
-    // Diğer metodlar zamanla eklenecek
+    void productDealOfTheDayStatusChangeToTrue(int id);
+    List<ResultProductWithCategoryDto> getProductByDealOfTheDayTrueWithCategoryAsync();
 }

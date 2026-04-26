@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class WhoWeAreDetailServiceImpl implements WhoWeAreDetailService {
-
     private final WhoWeAreDetailRepository whoWeAreDetailRepository;
 
     @Override

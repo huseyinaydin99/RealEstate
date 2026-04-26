@@ -1,8 +1,12 @@
 package tr.com.huseyinaydin.dto.testimonial;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResultTestimonialDto {
     private int testimonialID;
     private String nameSurname;

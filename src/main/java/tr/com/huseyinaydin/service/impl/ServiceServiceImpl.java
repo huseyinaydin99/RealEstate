@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ServiceServiceImpl implements ServiceService {
-
     private final ServiceRepository serviceRepository;
 
     @Override

@@ -12,17 +12,21 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
-
     private final ProductRepository productRepository;
 
     @Override
-    public List<ResultProductDto> getAllProduct() {
-        return productRepository.getAllProduct();
+    public List<ResultProductDto> getAllProductAsync() {
+        return productRepository.getAllProductAsync();
     }
 
     @Override
-    public List<ResultProductWithCategoryDto> getAllProductWithCategory() {
-        return productRepository.getAllProductWithCategory();
+    public List<ResultProductWithCategoryDto> getAllProductWithCategoryAsync() {
+        return productRepository.getAllProductWithCategoryAsync();
+    }
+
+    @Override
+    public void productDealOfTheDayStatusChangeToFalse(int id) {
+        productRepository.productDealOfTheDayStatusChangeToFalse(id);
     }
 
     @Override
@@ -31,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void productDealOfTheDayStatusChangeToFalse(int id) {
-        productRepository.productDealOfTheDayStatusChangeToFalse(id);
+    public List<ResultProductWithCategoryDto> getProductByDealOfTheDayTrueWithCategoryAsync() {
+        return productRepository.getProductByDealOfTheDayTrueWithCategoryAsync();
     }
 }

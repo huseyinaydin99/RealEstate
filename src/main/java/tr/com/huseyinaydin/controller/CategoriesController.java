@@ -11,37 +11,38 @@ import tr.com.huseyinaydin.service.CategoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Categories")
+@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoriesController {
-
     private final CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<List<ResultCategoryDto>> categoryList() {
-        return ResponseEntity.ok(categoryService.getAllCategory());
+        List<ResultCategoryDto> values = categoryService.getAllCategory();
+        return ResponseEntity.ok(values);
     }
 
     @PostMapping
     public ResponseEntity<String> createCategory(@RequestBody CreateCategoryDto createCategoryDto) {
         categoryService.createCategory(createCategoryDto);
-        return ResponseEntity.ok("Kategori başarıyla eklendi");
+        return ResponseEntity.ok("Kategori başarılı bir şekilde eklendi.");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCategory(@PathVariable("id") int id) {
-        categoryService.deleteCategory(id);
-        return ResponseEntity.ok("Kategori başarıyla silindi");
+    @DeleteMapping("/{categoryId}")
+    public ResponseEntity<String> deleteCategory(@PathVariable int categoryId) {
+        categoryService.deleteCategory(categoryId);
+        return ResponseEntity.ok("Kategori başarılı bir şekilde silindi.");
     }
 
     @PutMapping
     public ResponseEntity<String> updateCategory(@RequestBody UpdateCategoryDto updateCategoryDto) {
         categoryService.updateCategory(updateCategoryDto);
-        return ResponseEntity.ok("Kategori başarıyla güncellendi");
+        return ResponseEntity.ok("Kategori başarılı bir şekilde güncellendi.");
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ResultCategoryDto> getCategory(@PathVariable("id") int id) {
-        return ResponseEntity.ok(categoryService.getCategory(id));
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<ResultCategoryDto> getCategory(@PathVariable int categoryId) {
+        ResultCategoryDto value = categoryService.getCategory(categoryId);
+        return ResponseEntity.ok(value);
     }
 }

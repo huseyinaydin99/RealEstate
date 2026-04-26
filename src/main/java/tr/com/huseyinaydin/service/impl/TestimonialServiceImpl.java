@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TestimonialServiceImpl implements TestimonialService {
-
     private final TestimonialRepository testimonialRepository;
 
     @Override

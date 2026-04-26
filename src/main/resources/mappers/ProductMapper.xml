@@ -3,21 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tr.com.huseyinaydin.repository.ProductRepository">
-
-    <select id="getAllProduct" resultType="tr.com.huseyinaydin.dto.product.ResultProductDto">
+    <select id="getAllProductAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductDto">
         Select * From Product where ProductStatus=1
     </select>
 
-    <select id="getAllProductWithCategory" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
+    <select id="getAllProductWithCategoryAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
         Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay, ProductStatus, SlugUrl From Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductStatus=1
     </select>
-
-    <update id="productDealOfTheDayStatusChangeToTrue" parameterType="int">
-        Update Product set DealOfTheDay=1 where ProductID=#{id}
-    </update>
 
     <update id="productDealOfTheDayStatusChangeToFalse" parameterType="int">
         Update Product set DealOfTheDay=0 where ProductID=#{id}
     </update>
 
+    <update id="productDealOfTheDayStatusChangeToTrue" parameterType="int">
+        Update Product set DealOfTheDay=1 where ProductID=#{id}
+    </update>
+
+    <select id="getProductByDealOfTheDayTrueWithCategoryAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID Where DealOfTheDay=1
+    </select>
 </mapper>
