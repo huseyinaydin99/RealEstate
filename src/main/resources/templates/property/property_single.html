@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/default_layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>İlan Detayları</title>
+</head>
+<body>
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a th:href="@{/}">Ana Sayfa</a></li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> İlanlar</li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> İlan Detayları</li>
+        </ul>
+    </div>
+</section>
+
+<section class="w3l-blog post-content py-5">
+    <div class="container py-lg-4 py-md-3 py-2">
+        <div class="inner mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <div class="listing-category"><span th:text="${type}"></span></div>
+                </li>
+                <li><span class="fa fa-clock-o"></span> Yaklaşık <span th:text="${datediff}"></span> Gün Önce İlana Eklendi.</li>
+                <li><span class="fa fa-eye"></span> 250 kişi bu ilanı görüntüledi.</li>
+            </ul>
+        </div>
+        <div class="post-content">
+            <h2 class="title-single" th:text="${title1}"></h2>
+        </div>
+        <div class="blo-singl mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <p><span th:text="${address}"></span> <span th:text="${district}"></span> / <span th:text="${city}"></span></p>
+                </li>
+                <li><span class="fa fa-bed"></span> <span th:text="${bedCount}"></span> Yatak Odası</li>
+                <li><span class="fa fa-bath"></span> <span th:text="${bathCount}"></span> Banyo</li>
+                <li><span class="fa fa-share-square-o"></span> <span th:text="${size}"></span> metrekare</li>
+            </ul>
+            <ul class="share-post">
+                <a href="#url" class="cost-estate m-o">₺ <span th:text="${price}"></span></a>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 w3l-news">
+                <div class="blog-single-post">
+                    <div th:replace="~{components/property/_PropertySliderComponentPartial}"></div>
+                    <div class="single-post-content">
+                        <h3 class="post-content-title mb-3">İlan Açıklaması</h3>
+                        <p class="mb-4" th:text="${description}">
+                        </p>
+                        <div class="single-bg-white">
+                            <h3 class="post-content-title mb-4">İlan Detayları</h3>
+                            <ul class="details-list">
+                                <li><strong>Metrekare :</strong> <span th:text="${size}"></span></li>
+                                <li><strong>Oda Sayısı :</strong> <span th:text="${roomCount}"></span></li>
+                                <li><strong>Yatak Odası :</strong> <span th:text="${bedCount}"></span></li>
+                                <li><strong>Banyo Sayısı :</strong> <span th:text="${bathCount}"></span></li>
+                                <li><strong>Yapı Türü :</strong> Beton </li>
+                                <li><strong>Garaj Sayısı :</strong> <span th:text="${garageCount}"></span></li>
+                                <li><strong>Fiyat :</strong> <span th:text="${price}"></span> ₺ </li>
+                                <li><strong>Yapım Yılı :</strong> <span th:text="${buildYear}"></span></li>
+                                <li><strong>İlan Tarihi :</strong> <span th:text="${#temporals.format(date, 'dd-MMM-yyyy')}"></span></li>
+                            </ul>
+                        </div>
+                        <div th:replace="~{components/property/_PropertyAmenityStatusTrueByPropertyIdComponentPartial}"></div>
+                    </div>
+                    <div class="single-bg-white">
+                        <h3 class="post-content-title mb-4">Lokasyon</h3>
+                        <div class="agent-map">
+                            <iframe th:src="${location}"></iframe>
+                        </div>
+                    </div>
+                    <div class="single-bg-white mb-0">
+                        <h3 class="post-content-title mb-4">Ev Tanıtım Videosu</h3>
+                        <div class="post-content">
+                            <iframe th:src="${videoUrl}" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="~{components/property/_PropertyAppUserComponentPartial}"></div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

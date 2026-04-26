@@ -38,4 +38,20 @@
         Order By ProductID Desc
         Limit 5
     </select>
+
+    <select id="resultProductWithSearchList" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithSearchListDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay 
+        From Product 
+        inner join Category on Product.ProductCategory=Category.CategoryID 
+        Where Title like CONCAT('%', #{searchKeyValue}, '%') 
+        And ProductCategory=#{propertyCategoryId} 
+        And City=#{city}
+    </select>
+
+    <select id="getProductByProductId" resultType="tr.com.huseyinaydin.dto.product.GetProductByProductIdDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, Description, DealOfTheDay, AdvertisementDate, SlugUrl, AppUserId 
+        From Product 
+        inner join Category on Product.ProductCategory=Category.CategoryID 
+        where ProductID=#{id}
+    </select>
 </mapper>

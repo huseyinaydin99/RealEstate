@@ -1,0 +1,10 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="single-bg-white">
+        <h3 class="post-content-title mb-4">İlan Özellikleri</h3>
+        <ul class="details-list">
+            <li th:each="amenity : ${propertyAmenities}">
+                <i class="fa fa-check-circle text-success mr-2"></i> <span th:text="${amenity.title}"></span>
+            </li>
+        </ul>
+    </div>
+</div>

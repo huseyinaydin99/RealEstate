@@ -1,8 +1,6 @@
 package tr.com.huseyinaydin.service;
 
-import tr.com.huseyinaydin.dto.product.CreateProductDto;
-import tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto;
-import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
+import tr.com.huseyinaydin.dto.product.*;
 
 import java.util.List;
 
@@ -15,4 +13,6 @@ public interface ProductService {
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByTrue(int id);
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByFalse(int id);
     List<ResultProductWithCategoryDto> getLast5ProductAsync();
+    List<ResultProductWithSearchListDto> resultProductWithSearchList(String searchKeyValue, int propertyCategoryId, String city);
+    GetProductByProductIdDto getProductByProductId(int id);
 }

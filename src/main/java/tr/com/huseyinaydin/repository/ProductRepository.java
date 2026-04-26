@@ -1,9 +1,8 @@
 package tr.com.huseyinaydin.repository;
 
 import org.apache.ibatis.annotations.Mapper;
-import tr.com.huseyinaydin.dto.product.CreateProductDto;
-import tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto;
-import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
+import org.apache.ibatis.annotations.Param;
+import tr.com.huseyinaydin.dto.product.*;
 
 import java.util.List;
 
@@ -17,4 +16,6 @@ public interface ProductRepository {
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByTrue(int id);
     List<ResultProductAdvertListWithCategoryByEmployeeDto> getProductAdvertListByEmployeeAsyncByFalse(int id);
     List<ResultProductWithCategoryDto> getLast5ProductAsync();
+    List<ResultProductWithSearchListDto> resultProductWithSearchList(@Param("searchKeyValue") String searchKeyValue, @Param("propertyCategoryId") int propertyCategoryId, @Param("city") String city);
+    GetProductByProductIdDto getProductByProductId(int id);
 }

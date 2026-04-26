@@ -18,5 +18,7 @@
         INSERT INTO AppUser (Name, UserName, Password, UserRole, Email, PhoneNumber, UserImageUrl)
         VALUES (#{name}, #{userName}, #{password}, #{userRole}, #{email}, #{phoneNumber}, #{userImageUrl})
     </insert>
-
+    <select id="findByUserId" resultType="tr.com.huseyinaydin.model.AppUser">
+        SELECT * FROM AppUser WHERE UserId = #{userId}
+    </select>
 </mapper>

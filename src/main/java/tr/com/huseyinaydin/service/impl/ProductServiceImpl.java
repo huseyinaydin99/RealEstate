@@ -3,9 +3,7 @@ package tr.com.huseyinaydin.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tr.com.huseyinaydin.business.rules.ProductBusinessRules;
-import tr.com.huseyinaydin.dto.product.CreateProductDto;
-import tr.com.huseyinaydin.dto.product.ResultProductAdvertListWithCategoryByEmployeeDto;
-import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
+import tr.com.huseyinaydin.dto.product.*;
 import tr.com.huseyinaydin.repository.ProductRepository;
 import tr.com.huseyinaydin.service.ProductService;
 
@@ -23,7 +21,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void createProduct(CreateProductDto createProductDto) {
-        ProductBusinessRules.checkIfProductPriceIsNegative(createProductDto.getPrice());
         productRepository.createProduct(createProductDto);
     }
 
@@ -55,5 +52,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ResultProductWithCategoryDto> getLast5ProductAsync() {
         return productRepository.getLast5ProductAsync();
+    }
+
+    @Override
+    public List<ResultProductWithSearchListDto> resultProductWithSearchList(String searchKeyValue, int propertyCategoryId, String city) {
+        return productRepository.resultProductWithSearchList(searchKeyValue, propertyCategoryId, city);
+    }
+
+    @Override
+    public GetProductByProductIdDto getProductByProductId(int id) {
+        return productRepository.getProductByProductId(id);
     }
 }

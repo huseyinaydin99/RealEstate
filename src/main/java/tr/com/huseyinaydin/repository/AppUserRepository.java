@@ -10,4 +10,5 @@ public interface AppUserRepository {
     AppUser findByUserNameAndPassword(@Param("username") String username, @Param("password") String password);
     AppRole findRoleByUserId(@Param("userId") Integer userId);
     void createAppUser(AppUser appUser);
+    AppUser findByUserId(@Param("userId") Integer userId);
 }

@@ -1,0 +1,9 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="blo-singl mb-4">
+        <div id="owl-demo" class="owl-carousel owl-theme">
+            <div class="item" th:each="image : ${productImages}">
+                <img th:src="${image.imageUrl}" class="img-fluid" alt="İlan Görseli">
+            </div>
+        </div>
+    </div>
+</div>

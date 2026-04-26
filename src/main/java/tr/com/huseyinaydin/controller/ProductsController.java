@@ -48,4 +48,14 @@ public class ProductsController {
     public ResponseEntity<List<ResultProductWithCategoryDto>> last5ProductList() {
         return ResponseEntity.ok(productService.getLast5ProductAsync());
     }
+
+    @GetMapping("/ResultProductWithSearchList")
+    public ResponseEntity<?> resultProductWithSearchList(@RequestParam("searchKeyValue") String searchKeyValue, @RequestParam("propertyCategoryId") int propertyCategoryId, @RequestParam("city") String city) {
+        return ResponseEntity.ok(productService.resultProductWithSearchList(searchKeyValue, propertyCategoryId, city));
+    }
+
+    @GetMapping("/GetProductByProductId")
+    public ResponseEntity<?> getProductByProductId(@RequestParam("id") int id) {
+        return ResponseEntity.ok(productService.getProductByProductId(id));
+    }
 }
