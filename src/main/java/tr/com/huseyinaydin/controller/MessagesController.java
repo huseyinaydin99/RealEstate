@@ -8,9 +8,12 @@ import tr.com.huseyinaydin.service.MessageService;
 
 @RestController
 @RequestMapping("/api/messages")
-@RequiredArgsConstructor
 public class MessagesController {
     private final MessageService messageService;
+
+    public MessagesController(MessageService messageService) {
+        this.messageService = messageService;
+    }
 
     @GetMapping("/inbox/{id}")
     public ResponseEntity<?> getAllMessageInBox(@PathVariable int id) {

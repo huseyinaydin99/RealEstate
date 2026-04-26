@@ -9,9 +9,12 @@ import tr.com.huseyinaydin.service.StatisticsService;
 
 @Controller
 @RequestMapping("/admin/statistics")
-@RequiredArgsConstructor
 public class AdminStatisticsController {
     private final StatisticsService statisticsService;
+
+    public AdminStatisticsController(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
 
     @GetMapping
     public String index(Model model) {

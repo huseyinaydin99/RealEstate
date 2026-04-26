@@ -9,10 +9,13 @@ import tr.com.huseyinaydin.service.ProductService;
 
 @Controller
 @RequestMapping("/admin/products")
-@RequiredArgsConstructor
 public class AdminProductController {
 
     private final ProductService productService;
+
+    public AdminProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public String index(Model model) {

@@ -12,9 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/testimonials")
-@RequiredArgsConstructor
 public class TestimonialsController {
     private final TestimonialService testimonialService;
+
+    public TestimonialsController(TestimonialService testimonialService) {
+        this.testimonialService = testimonialService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ResultTestimonialDto>> testimonialList() {

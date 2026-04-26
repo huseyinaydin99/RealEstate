@@ -5,15 +5,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tr.com.huseyinaydin.dto.product.CreateProductDto;
 import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
+import tr.com.huseyinaydin.validation.ProductValidator;
 import tr.com.huseyinaydin.service.ProductService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/products")
-@RequiredArgsConstructor
 public class ProductsController {
     private final ProductService productService;
+
+    public ProductsController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ResultProductWithCategoryDto>> productListWithCategory() {
@@ -22,6 +26,7 @@ public class ProductsController {
 
     @PostMapping
     public ResponseEntity<String> createProduct(@RequestBody CreateProductDto createProductDto) {
+        ProductValidator.validateCreate(createProductDto);
         productService.createProduct(createProductDto);
         return ResponseEntity.ok("Ürün başarılı bir şekilde eklendi.");
     }

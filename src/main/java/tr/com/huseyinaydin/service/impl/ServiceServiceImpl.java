@@ -11,9 +11,12 @@ import tr.com.huseyinaydin.service.ServiceService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ServiceServiceImpl implements ServiceService {
     private final ServiceRepository serviceRepository;
+
+    public ServiceServiceImpl(ServiceRepository serviceRepository) {
+        this.serviceRepository = serviceRepository;
+    }
 
     @Override
     public List<ResultServiceDto> getAllService() {

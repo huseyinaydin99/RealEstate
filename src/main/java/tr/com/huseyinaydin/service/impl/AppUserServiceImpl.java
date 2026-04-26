@@ -10,9 +10,12 @@ import tr.com.huseyinaydin.repository.AppUserRepository;
 import tr.com.huseyinaydin.service.AppUserService;
 
 @Service
-@RequiredArgsConstructor
 public class AppUserServiceImpl implements AppUserService {
     private final AppUserRepository appUserRepository;
+
+    public AppUserServiceImpl(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
 
     @Override
     public void register(CreateAppUserDto createAppUserDto) {

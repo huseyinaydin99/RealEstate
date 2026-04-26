@@ -25,4 +25,116 @@ public class GetProductByProductIdDto {
     private LocalDateTime advertisementDate;
     private String slugUrl;
     private int appUserId;
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean getDealOfTheDay() {
+        return dealOfTheDay;
+    }
+
+    public void setDealOfTheDay(boolean dealOfTheDay) {
+        this.dealOfTheDay = dealOfTheDay;
+    }
+
+    public LocalDateTime getAdvertisementDate() {
+        return advertisementDate;
+    }
+
+    public void setAdvertisementDate(LocalDateTime advertisementDate) {
+        this.advertisementDate = advertisementDate;
+    }
+
+    public String getSlugUrl() {
+        return slugUrl;
+    }
+
+    public void setSlugUrl(String slugUrl) {
+        this.slugUrl = slugUrl;
+    }
+
+    public int getAppUserId() {
+        return appUserId;
+    }
+
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
+    }
 }

@@ -10,4 +10,20 @@ import lombok.NoArgsConstructor;
 public class CreateServiceDto {
     private String serviceName;
     private boolean serviceStatus;
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public boolean isServiceStatus() {
+        return serviceStatus;
+    }
+
+    public void setServiceStatus(boolean serviceStatus) {
+        this.serviceStatus = serviceStatus;
+    }
 }

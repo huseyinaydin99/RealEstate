@@ -11,9 +11,12 @@ import tr.com.huseyinaydin.service.AppUserService;
 
 @RestController
 @RequestMapping("/api/Profile")
-@RequiredArgsConstructor
 public class ProfileController {
     private final AppUserService appUserService;
+
+    public ProfileController(AppUserService appUserService) {
+        this.appUserService = appUserService;
+    }
 
     @GetMapping
     public ResponseEntity<AppUser> getProfile(@AuthenticationPrincipal UserPrincipal userPrincipal) {

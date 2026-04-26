@@ -6,14 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tr.com.huseyinaydin.dto.category.CreateCategoryDto;
 import tr.com.huseyinaydin.dto.category.UpdateCategoryDto;
+import tr.com.huseyinaydin.validation.CategoryValidator;
 import tr.com.huseyinaydin.service.CategoryService;
 
 @Controller
 @RequestMapping("/admin/categories")
-@RequiredArgsConstructor
 public class AdminCategoryController {
 
     private final CategoryService categoryService;
+
+    public AdminCategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping
     public String index(Model model) {
@@ -28,9 +32,16 @@ public class AdminCategoryController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute CreateCategoryDto createCategoryDto) {
-        categoryService.createCategory(createCategoryDto);
-        return "redirect:/admin/categories";
+    public String create(@ModelAttribute CreateCategoryDto createCategoryDto, Model model) {
+        try {
+            CategoryValidator.validateCreate(createCategoryDto);
+            categoryService.createCategory(createCategoryDto);
+            return "redirect:/admin/categories";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("category", createCategoryDto);
+            return "admin/category/create";
+        }
     }
 
     @GetMapping("/delete/{id}")
@@ -46,8 +57,15 @@ public class AdminCategoryController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute UpdateCategoryDto updateCategoryDto) {
-        categoryService.updateCategory(updateCategoryDto);
-        return "redirect:/admin/categories";
+    public String update(@ModelAttribute UpdateCategoryDto updateCategoryDto, Model model) {
+        try {
+            CategoryValidator.validateUpdate(updateCategoryDto);
+            categoryService.updateCategory(updateCategoryDto);
+            return "redirect:/admin/categories";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("category", updateCategoryDto);
+            return "admin/category/update";
+        }
     }
 }

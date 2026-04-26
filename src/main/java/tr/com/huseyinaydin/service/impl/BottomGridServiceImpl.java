@@ -10,9 +10,12 @@ import tr.com.huseyinaydin.service.BottomGridService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BottomGridServiceImpl implements BottomGridService {
     private final BottomGridRepository bottomGridRepository;
+
+    public BottomGridServiceImpl(BottomGridRepository bottomGridRepository) {
+        this.bottomGridRepository = bottomGridRepository;
+    }
 
     @Override
     public List<ResultBottomGridDto> getAllBottomGrid() {

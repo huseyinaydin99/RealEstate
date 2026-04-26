@@ -18,13 +18,20 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/property")
-@RequiredArgsConstructor
 public class PropertyController {
     private final ProductService productService;
     private final ProductDetailService productDetailService;
     private final ProductImageService productImageService;
     private final PropertyAmenityService propertyAmenityService;
     private final AppUserService appUserService;
+
+    public PropertyController(ProductService productService, ProductDetailService productDetailService, ProductImageService productImageService, PropertyAmenityService propertyAmenityService, AppUserService appUserService) {
+        this.productService = productService;
+        this.productDetailService = productDetailService;
+        this.productImageService = productImageService;
+        this.propertyAmenityService = propertyAmenityService;
+        this.appUserService = appUserService;
+    }
 
     @GetMapping("/{id}")
     public String propertySingle(@PathVariable int id, Model model) {
@@ -58,7 +65,7 @@ public class PropertyController {
 
         model.addAttribute("productImages", productImageService.getProductImageByProductId(id));
         model.addAttribute("propertyAmenities", propertyAmenityService.getPropertyAmenityByStatusTrue(id));
-        model.addAttribute("appUser", appUserService.getUserById(product.getAppUserId()));
+        model.addAttribute("appUser", appUserService.getById(product.getAppUserId()));
 
         return "property/property_single";
     }

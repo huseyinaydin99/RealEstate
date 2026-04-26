@@ -12,10 +12,13 @@ import tr.com.huseyinaydin.service.ProductDetailService;
 
 @RestController
 @RequestMapping("/api/ProductDetails")
-@RequiredArgsConstructor
 @Tag(name = "ProductDetails", description = "Product Details API")
 public class ProductDetailsController {
     private final ProductDetailService productDetailService;
+
+    public ProductDetailsController(ProductDetailService productDetailService) {
+        this.productDetailService = productDetailService;
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<GetProductDetailByIdDto> getProductDetailByProductId(@PathVariable int id) {

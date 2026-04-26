@@ -9,9 +9,12 @@ import tr.com.huseyinaydin.service.WhoWeAreDetailService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class WhoWeAreDetailServiceImpl implements WhoWeAreDetailService {
     private final WhoWeAreDetailRepository whoWeAreDetailRepository;
+
+    public WhoWeAreDetailServiceImpl(WhoWeAreDetailRepository whoWeAreDetailRepository) {
+        this.whoWeAreDetailRepository = whoWeAreDetailRepository;
+    }
 
     @Override
     public List<ResultWhoWeAreDetailDto> getAllWhoWeAreDetail() {

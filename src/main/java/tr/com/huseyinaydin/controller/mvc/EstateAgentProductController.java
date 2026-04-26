@@ -11,10 +11,13 @@ import tr.com.huseyinaydin.service.ProductService;
 
 @Controller
 @RequestMapping("/estateagent/myadverts")
-@RequiredArgsConstructor
 public class EstateAgentProductController {
 
     private final ProductService productService;
+
+    public EstateAgentProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/active")
     public String activeAdverts(Model model, Authentication authentication) {

@@ -12,9 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/ProductImages")
-@RequiredArgsConstructor
 public class ProductImagesController {
     private final ProductImageService productImageService;
+
+    public ProductImagesController(ProductImageService productImageService) {
+        this.productImageService = productImageService;
+    }
 
     @GetMapping("/{productId}")
     public ResponseEntity<List<GetProductImageByProductIdDto>> getProductImageByProductId(@PathVariable int productId) {

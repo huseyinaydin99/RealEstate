@@ -12,10 +12,13 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/Statistics")
-@RequiredArgsConstructor
 @Tag(name = "Statistics", description = "Statistics API")
 public class StatisticsController {
     private final StatisticsService statisticsService;
+
+    public StatisticsController(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
 
     @GetMapping("/ActiveCategoryCount")
     public ResponseEntity<Integer> activeCategoryCount() {

@@ -11,10 +11,13 @@ import tr.com.huseyinaydin.service.EstateAgentDashboardService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "statistics")
 public class EstateAgentDashboardServiceImpl implements EstateAgentDashboardService {
     private final EstateAgentDashboardRepository repository;
+
+    public EstateAgentDashboardServiceImpl(EstateAgentDashboardRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     @Cacheable(key = "'get5CityForChart'")

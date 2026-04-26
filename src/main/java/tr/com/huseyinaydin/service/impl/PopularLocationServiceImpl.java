@@ -15,10 +15,13 @@ import tr.com.huseyinaydin.service.PopularLocationService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "popularLocations")
 public class PopularLocationServiceImpl implements PopularLocationService {
     private final PopularLocationRepository popularLocationRepository;
+
+    public PopularLocationServiceImpl(PopularLocationRepository popularLocationRepository) {
+        this.popularLocationRepository = popularLocationRepository;
+    }
 
     @Override
     @Cacheable(key = "'allPopularLocations'")

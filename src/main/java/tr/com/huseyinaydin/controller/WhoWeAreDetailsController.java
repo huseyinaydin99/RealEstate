@@ -12,9 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/whowearedetails")
-@RequiredArgsConstructor
 public class WhoWeAreDetailsController {
     private final WhoWeAreDetailService whoWeAreDetailService;
+
+    public WhoWeAreDetailsController(WhoWeAreDetailService whoWeAreDetailService) {
+        this.whoWeAreDetailService = whoWeAreDetailService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ResultWhoWeAreDetailDto>> whoWeAreDetailList() {

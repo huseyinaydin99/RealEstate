@@ -11,9 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/services")
-@RequiredArgsConstructor
 public class ServicesController {
     private final ServiceService serviceService;
+
+    public ServicesController(ServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ResultServiceDto>> serviceList() {

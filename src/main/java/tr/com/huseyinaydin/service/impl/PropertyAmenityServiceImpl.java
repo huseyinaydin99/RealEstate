@@ -9,9 +9,12 @@ import tr.com.huseyinaydin.service.PropertyAmenityService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class PropertyAmenityServiceImpl implements PropertyAmenityService {
     private final PropertyAmenityRepository propertyAmenityRepository;
+
+    public PropertyAmenityServiceImpl(PropertyAmenityRepository propertyAmenityRepository) {
+        this.propertyAmenityRepository = propertyAmenityRepository;
+    }
 
     @Override
     public List<ResultPropertyAmenityByStatusTrueDto> getPropertyAmenityByStatusTrue(int id) {

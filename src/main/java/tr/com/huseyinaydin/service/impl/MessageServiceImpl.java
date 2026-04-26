@@ -15,9 +15,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService {
     private final MessageMapper messageMapper;
+
+    public MessageServiceImpl(MessageMapper messageMapper) {
+        this.messageMapper = messageMapper;
+    }
 
     @Override
     @Cacheable(value = "last3messages", key = "#id")

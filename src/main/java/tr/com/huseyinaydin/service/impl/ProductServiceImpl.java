@@ -10,9 +10,12 @@ import tr.com.huseyinaydin.service.ProductService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     @Override
     public List<ResultProductWithCategoryDto> getAllProductWithCategory() {

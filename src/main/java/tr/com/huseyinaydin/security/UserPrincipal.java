@@ -16,4 +16,12 @@ public class UserPrincipal extends User {
         this.userId = userId;
         this.imageUrl = imageUrl;
     }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

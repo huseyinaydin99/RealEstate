@@ -13,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/EstateAgentCharts")
-@RequiredArgsConstructor
 @Tag(name = "EstateAgentCharts", description = "Grafik Verileri")
 public class EstateAgentChartsController {
     private final EstateAgentDashboardService service;
+
+    public EstateAgentChartsController(EstateAgentDashboardService service) {
+        this.service = service;
+    }
 
     @GetMapping("/Get5CityForChart")
     public ResponseEntity<List<ResultChartDto>> get5CityForChart() {

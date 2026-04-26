@@ -6,15 +6,19 @@ import org.springframework.web.bind.annotation.*;
 import tr.com.huseyinaydin.dto.category.CreateCategoryDto;
 import tr.com.huseyinaydin.dto.category.ResultCategoryDto;
 import tr.com.huseyinaydin.dto.category.UpdateCategoryDto;
+import tr.com.huseyinaydin.validation.CategoryValidator;
 import tr.com.huseyinaydin.service.CategoryService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/categories")
-@RequiredArgsConstructor
 public class CategoriesController {
     private final CategoryService categoryService;
+
+    public CategoriesController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping
     public ResponseEntity<List<ResultCategoryDto>> categoryList() {
@@ -23,6 +27,7 @@ public class CategoriesController {
 
     @PostMapping
     public ResponseEntity<String> createCategory(@RequestBody CreateCategoryDto createCategoryDto) {
+        CategoryValidator.validateCreate(createCategoryDto);
         categoryService.createCategory(createCategoryDto);
         return ResponseEntity.ok("Kategori başarılı bir şekilde eklendi.");
     }
@@ -35,6 +40,7 @@ public class CategoriesController {
 
     @PutMapping
     public ResponseEntity<String> updateCategory(@RequestBody UpdateCategoryDto updateCategoryDto) {
+        CategoryValidator.validateUpdate(updateCategoryDto);
         categoryService.updateCategory(updateCategoryDto);
         return ResponseEntity.ok("Kategori başarılı bir şekilde güncellendi.");
     }

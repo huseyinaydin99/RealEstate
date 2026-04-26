@@ -10,10 +10,13 @@ import tr.com.huseyinaydin.service.StatisticsService;
 import java.math.BigDecimal;
 
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "statistics")
 public class StatisticsServiceImpl implements StatisticsService {
     private final StatisticsRepository statisticsRepository;
+
+    public StatisticsServiceImpl(StatisticsRepository statisticsRepository) {
+        this.statisticsRepository = statisticsRepository;
+    }
 
     @Override
     @Cacheable(key = "'categoryCount'")

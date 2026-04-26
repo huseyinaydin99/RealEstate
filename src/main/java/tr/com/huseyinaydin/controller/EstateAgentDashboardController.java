@@ -11,10 +11,13 @@ import tr.com.huseyinaydin.service.EstateAgentDashboardService;
 
 @RestController
 @RequestMapping("api/EstateAgentDashboard")
-@RequiredArgsConstructor
 @Tag(name = "EstateAgentDashboard", description = "Emlakçı Dashboard İstatistikleri")
 public class EstateAgentDashboardController {
     private final EstateAgentDashboardService service;
+
+    public EstateAgentDashboardController(EstateAgentDashboardService service) {
+        this.service = service;
+    }
 
     @GetMapping("/ProductCountByEmployeeId")
     public ResponseEntity<Integer> productCountByEmployeeId(@RequestParam int id) {

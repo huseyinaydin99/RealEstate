@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequiredArgsConstructor
 public class DefaultController {
     private final ProductService productService;
     private final WhoWeAreDetailService whoWeAreDetailService;
@@ -19,6 +18,15 @@ public class DefaultController {
     private final TestimonialService testimonialService;
     private final PopularLocationService popularLocationService;
     private final BottomGridService bottomGridService;
+
+    public DefaultController(ProductService productService, WhoWeAreDetailService whoWeAreDetailService, ServiceService serviceService, TestimonialService testimonialService, PopularLocationService popularLocationService, BottomGridService bottomGridService) {
+        this.productService = productService;
+        this.whoWeAreDetailService = whoWeAreDetailService;
+        this.serviceService = serviceService;
+        this.testimonialService = testimonialService;
+        this.popularLocationService = popularLocationService;
+        this.bottomGridService = bottomGridService;
+    }
 
     @GetMapping({"/", "/Default/Index", "/index"})
     public String index(Model model) {

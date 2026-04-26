@@ -9,9 +9,12 @@ import tr.com.huseyinaydin.service.TestimonialService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class TestimonialServiceImpl implements TestimonialService {
     private final TestimonialRepository testimonialRepository;
+
+    public TestimonialServiceImpl(TestimonialRepository testimonialRepository) {
+        this.testimonialRepository = testimonialRepository;
+    }
 
     @Override
     public List<ResultTestimonialDto> getAllTestimonial() {

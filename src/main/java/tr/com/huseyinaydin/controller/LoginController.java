@@ -11,20 +11,27 @@ import tr.com.huseyinaydin.model.AppUser;
 import tr.com.huseyinaydin.repository.AppUserRepository;
 import tr.com.huseyinaydin.security.JwtTokenGenerator;
 import tr.com.huseyinaydin.service.AppUserService;
+import tr.com.huseyinaydin.validation.UserValidator;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/Login")
-@RequiredArgsConstructor
 public class LoginController {
     private final AppUserRepository appUserRepository;
     private final JwtTokenGenerator jwtTokenGenerator;
     private final AppUserService appUserService;
 
+    public LoginController(AppUserRepository appUserRepository, JwtTokenGenerator jwtTokenGenerator, AppUserService appUserService) {
+        this.appUserRepository = appUserRepository;
+        this.jwtTokenGenerator = jwtTokenGenerator;
+        this.appUserService = appUserService;
+    }
+
     @PostMapping
     public ResponseEntity<?> signIn(@RequestBody LoginRequestDto loginDto) {
+        UserValidator.validateLogin(loginDto);
         AppUser user = appUserRepository.findByUserNameAndPassword(loginDto.getUsername(), loginDto.getPassword());
 
         if (user != null) {
@@ -53,6 +60,7 @@ public class LoginController {
 
     @PostMapping("/Register")
     public ResponseEntity<?> register(@RequestBody CreateAppUserDto createAppUserDto) {
+        UserValidator.validateRegister(createAppUserDto);
         if (createAppUserDto.getUserRole() == 0) {
             Integer roleId = appUserRepository.getRoleIdByRoleName("Member");
             if (roleId != null) {

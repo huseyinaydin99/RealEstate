@@ -13,10 +13,14 @@ import tr.com.huseyinaydin.service.AppUserService;
 
 @Controller
 @RequestMapping("/Register")
-@RequiredArgsConstructor
 public class MvcRegisterController {
     private final AppUserService appUserService;
     private final AppUserRepository appUserRepository;
+
+    public MvcRegisterController(AppUserService appUserService, AppUserRepository appUserRepository) {
+        this.appUserService = appUserService;
+        this.appUserRepository = appUserRepository;
+    }
 
     @GetMapping("/Index")
     public String index(Model model) {

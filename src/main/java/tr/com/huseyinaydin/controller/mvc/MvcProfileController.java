@@ -15,23 +15,25 @@ import tr.com.huseyinaydin.service.AppUserService;
 
 @Controller
 @RequestMapping("/Profile")
-@RequiredArgsConstructor
 public class MvcProfileController {
     private final AppUserService appUserService;
+
+    public MvcProfileController(AppUserService appUserService) {
+        this.appUserService = appUserService;
+    }
 
     @GetMapping("/Index")
     public String index(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
         AppUser user = appUserService.getById(userPrincipal.getUserId());
-        ProfileUpdateDto profileUpdateDto = ProfileUpdateDto.builder()
-                .userId(user.getUserId())
-                .name(user.getName())
-                .userName(user.getUserName())
-                .password(user.getPassword())
-                .email(user.getEmail())
-                .phoneNumber(user.getPhoneNumber())
-                .userImageUrl(user.getUserImageUrl())
-                .userRole(user.getUserRole())
-                .build();
+        ProfileUpdateDto profileUpdateDto = new ProfileUpdateDto();
+        profileUpdateDto.setUserId(user.getUserId());
+        profileUpdateDto.setName(user.getName());
+        profileUpdateDto.setUserName(user.getUserName());
+        profileUpdateDto.setPassword(user.getPassword());
+        profileUpdateDto.setEmail(user.getEmail());
+        profileUpdateDto.setPhoneNumber(user.getPhoneNumber());
+        profileUpdateDto.setUserImageUrl(user.getUserImageUrl());
+        profileUpdateDto.setUserRole(user.getUserRole());
         model.addAttribute("profile", profileUpdateDto);
         return "admin/profile/index";
     }
