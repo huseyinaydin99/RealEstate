@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Hatası - Sayfa Bulunamadı</title>
+    <style>
+        body {
+            background-color: #0000aa;
+            color: #ffffff;
+            font-family: 'Lucida Console', Monaco, monospace;
+            height: 100vh;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .bsod-container {
+            max-width: 900px;
+        }
+
+        h1 {
+            background-color: #aaaaaa;
+            color: #0000aa;
+            display: inline-block;
+            padding: 0 10px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .technical-info {
+            margin-top: 40px;
+            border-top: 1px solid #ffffff;
+            padding-top: 20px;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .action-link {
+            color: #ffff00;
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .footer-msg {
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="bsod-container">
+        <h1>SİSTEM SAYFAYI BULAMADI VE İŞLEMİ DURDURDU</h1>
+        
+        <p>Aradığınız dosya veya kaynak sunucuda bulunamadı (404 Not Found).</p>
+        
+        <p>Sorunu gidermek için aşağıdaki adımları deneyin:</p>
+        
+        <p>1. URL adresini doğru yazdığınızdan emin olun.<br/>
+           2. <a th:href="@{/}" class="action-link">ANA SAYFAYA DÖNMEK İÇİN TIKLAYIN</a>.<br/>
+           3. Eğer bu bağlantının çalışması gerektiğini düşünüyorsanız sistem yöneticisine başvurun.</p>
+        
+        <p>Bellek dökümü (Memory Dump) alınıyor... Lütfen beklemeyin, gidip bir kahve için.</p>
+
+        <div class="technical-info">
+            <p>*** STOP: 0x00000404 (PAGE_FAULT_IN_NONPAGED_AREA)</p>
+            <p>*** REALESTATE_UI.SYS - Address FFFFF8000404404, DateStamp 20260426</p>
+        </div>
+
+        <p class="blink">Sıfırlamak için tarayıcınızı kapatın veya geri dönün _</p>
+        
+        <div class="footer-msg">
+            <p>Hata Kodu: REQUESTED_RESOURCE_NOT_FOUND</p>
+        </div>
+    </div>
+</body>
+</html>

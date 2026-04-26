@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div th:replace="~{layout/estateagent_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/estateagent_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Pasif İlanlarım</h6>
+                        <a th:href="@{/estateagent/adverts/create}" class="btn btn-primary">Yeni İlan Ekle</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">İlan Başlığı</th>
+                                    <th scope="col">Kategori</th>
+                                    <th scope="col">Fiyat</th>
+                                    <th scope="col">Tür</th>
+                                    <th scope="col">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${products}">
+                                    <td th:text="${item.productID}"></td>
+                                    <td th:text="${item.title}"></td>
+                                    <td th:text="${item.categoryName}"></td>
+                                    <td th:text="${item.price}"></td>
+                                    <td th:text="${item.type}"></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-success" th:href="@{'/estateagent/adverts/status-true/' + ${item.productID}}">Aktif Yap</a>
+                                        <a class="btn btn-sm btn-info" th:href="@{'/estateagent/adverts/update/' + ${item.productID}}">Güncelle</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

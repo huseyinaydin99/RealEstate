@@ -8,6 +8,7 @@ import tr.com.huseyinaydin.dto.appuser.ProfileUpdateDto;
 import tr.com.huseyinaydin.model.AppUser;
 import tr.com.huseyinaydin.repository.AppUserRepository;
 import tr.com.huseyinaydin.service.AppUserService;
+import java.util.List;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
@@ -56,5 +57,15 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser getByUserName(String userName) {
         return appUserRepository.findByUserName(userName);
+    }
+
+    @Override
+    public List<AppUser> getAllUsers() {
+        return appUserRepository.findAll();
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        appUserRepository.deleteById(id);
     }
 }

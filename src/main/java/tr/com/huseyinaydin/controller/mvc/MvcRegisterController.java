@@ -28,6 +28,14 @@ public class MvcRegisterController {
         return "register/index";
     }
 
+    /*
+    @GetMapping("/Login")
+    public String login(Model model) {
+        model.addAttribute("appUser", new CreateAppUserDto());
+        return "redirect:/Login/Index";
+    }
+    */
+
     @PostMapping("/Index")
     public String index(@ModelAttribute CreateAppUserDto createAppUserDto) {
         if (createAppUserDto.getUserRole() == 0) {

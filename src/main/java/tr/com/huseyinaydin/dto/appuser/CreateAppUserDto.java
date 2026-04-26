@@ -1,14 +1,5 @@
 package tr.com.huseyinaydin.dto.appuser;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreateAppUserDto {
     private String name;
     private String userName;
@@ -17,6 +8,19 @@ public class CreateAppUserDto {
     private String email;
     private String phoneNumber;
     private String userImageUrl;
+
+    public CreateAppUserDto() {
+    }
+
+    public CreateAppUserDto(String name, String userName, String password, int userRole, String email, String phoneNumber, String userImageUrl) {
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.userRole = userRole;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.userImageUrl = userImageUrl;
+    }
 
     public String getName() {
         return name;

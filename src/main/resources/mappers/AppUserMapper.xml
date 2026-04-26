@@ -42,4 +42,11 @@
     <select id="findByUserName" resultType="tr.com.huseyinaydin.model.AppUser">
         SELECT * FROM AppUser WHERE UserName = #{username}
     </select>
+    <select id="findAll" resultType="tr.com.huseyinaydin.model.AppUser">
+        SELECT * FROM AppUser
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM AppUser WHERE UserId = #{userId}
+    </delete>
 </mapper>

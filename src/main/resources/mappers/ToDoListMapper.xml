@@ -7,15 +7,15 @@
         Select * From ToDoList
     </select>
     <insert id="createToDoList" parameterType="string">
-        insert into ToDoList (Description, ToDoListStatus) values (#{description}, 0)
+        insert into ToDoList (Description, ToDoListStatus) values (#{description}, FALSE)
     </insert>
     <delete id="deleteToDoList" parameterType="int">
         Delete From ToDoList where ToDoListID=#{id}
     </delete>
     <update id="toDoListStatusChangeToTrue" parameterType="int">
-        Update ToDoList Set ToDoListStatus=1 where ToDoListID=#{id}
+        Update ToDoList Set ToDoListStatus=TRUE where ToDoListID=#{id}
     </update>
     <update id="toDoListStatusChangeToFalse" parameterType="int">
-        Update ToDoList Set ToDoListStatus=0 where ToDoListID=#{id}
+        Update ToDoList Set ToDoListStatus=FALSE where ToDoListID=#{id}
     </update>
 </mapper>

@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import tr.com.huseyinaydin.model.AppUser;
 import tr.com.huseyinaydin.model.AppRole;
+import java.util.List;
 
 @Mapper
 public interface AppUserRepository {
@@ -14,4 +15,6 @@ public interface AppUserRepository {
     AppUser findByUserId(@Param("userId") Integer userId);
     Integer getRoleIdByRoleName(@Param("roleName") String roleName);
     AppUser findByUserName(@Param("username") String username);
+    List<AppUser> findAll();
+    void deleteById(@Param("userId") Integer userId);
 }

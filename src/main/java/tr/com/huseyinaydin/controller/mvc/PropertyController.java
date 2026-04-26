@@ -70,8 +70,18 @@ public class PropertyController {
         return "property/property_single";
     }
 
+    @GetMapping
+    public String index(Model model) {
+        List<ResultProductWithSearchListDto> values = productService.resultProductWithSearchList("", 0, "");
+        model.addAttribute("products", values);
+        return "property/property_list_with_search";
+    }
+
     @GetMapping("/search")
-    public String propertyListWithSearch(@RequestParam String searchKeyValue, @RequestParam int propertyCategoryId, @RequestParam String city, Model model) {
+    public String propertyListWithSearch(@RequestParam(required = false, defaultValue = "") String searchKeyValue,
+                                         @RequestParam(required = false, defaultValue = "0") int propertyCategoryId,
+                                         @RequestParam(required = false, defaultValue = "") String city,
+                                         Model model) {
         List<ResultProductWithSearchListDto> values = productService.resultProductWithSearchList(searchKeyValue, propertyCategoryId, city);
         model.addAttribute("products", values);
         return "property/property_list_with_search";

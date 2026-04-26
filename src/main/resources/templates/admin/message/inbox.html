@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Gelen Kutusu</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Gönderen</th>
+                                    <th scope="col">Konu</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${messages}">
+                                    <td th:text="${item.messageId}"></td>
+                                    <td th:text="${item.senderName}"></td>
+                                    <td th:text="${item.subject}"></td>
+                                    <td th:text="${item.sendDate}"></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="#">Mesajı Aç</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

@@ -12,11 +12,11 @@
     </select>
     
     <select id="productCountByStatusTrue" parameterType="int" resultType="int">
-        Select Count(*) From Product Where AppUserId=#{id} And ProductStatus=1
+        Select Count(*) From Product Where AppUserId=#{id} And ProductStatus=TRUE
     </select>
     
     <select id="productCountByStatusFalse" parameterType="int" resultType="int">
-        Select Count(*) From Product Where AppUserId=#{id} And ProductStatus=0
+        Select Count(*) From Product Where AppUserId=#{id} And ProductStatus=FALSE
     </select>
     
     <select id="allProductCount" resultType="int">

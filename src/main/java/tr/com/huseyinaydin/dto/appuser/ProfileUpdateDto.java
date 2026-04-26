@@ -1,14 +1,5 @@
 package tr.com.huseyinaydin.dto.appuser;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class ProfileUpdateDto {
     private int userId;
     private String name;
@@ -18,6 +9,20 @@ public class ProfileUpdateDto {
     private String email;
     private String phoneNumber;
     private String userImageUrl;
+
+    public ProfileUpdateDto() {
+    }
+
+    public ProfileUpdateDto(int userId, String name, String userName, String password, int userRole, String email, String phoneNumber, String userImageUrl) {
+        this.userId = userId;
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.userRole = userRole;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.userImageUrl = userImageUrl;
+    }
 
     public int getUserId() {
         return userId;

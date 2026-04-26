@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tr.com.huseyinaydin.repository.StatisticsRepository">
     <select id="activeCategoryCount" resultType="int">
-        SELECT COUNT(*) FROM Category WHERE CategoryStatus = 1
+        SELECT COUNT(*) FROM Category WHERE CategoryStatus = TRUE
     </select>
     <select id="activeEmployeeCount" resultType="int">
         SELECT COUNT(*) FROM AppUser
@@ -55,7 +55,7 @@
         SELECT BuildYear FROM ProductDetails ORDER BY BuildYear ASC LIMIT 1
     </select>
     <select id="passiveCategoryCount" resultType="int">
-        SELECT COUNT(*) FROM Category WHERE CategoryStatus = 0
+        SELECT COUNT(*) FROM Category WHERE CategoryStatus = FALSE
     </select>
     <select id="productCount" resultType="int">
         SELECT COUNT(*) FROM Product

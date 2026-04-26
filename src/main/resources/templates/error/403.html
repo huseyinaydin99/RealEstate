@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Hatası - BSOD</title>
+    <style>
+        body {
+            background-color: #0000aa;
+            color: #ffffff;
+            font-family: 'Lucida Console', Monaco, monospace;
+            height: 100vh;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .bsod-container {
+            max-width: 900px;
+        }
+
+        h1 {
+            background-color: #aaaaaa;
+            color: #0000aa;
+            display: inline-block;
+            padding: 0 10px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .technical-info {
+            margin-top: 40px;
+            border-top: 1px solid #ffffff;
+            padding-top: 20px;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .action-link {
+            color: #ffff00;
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .footer-msg {
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="bsod-container">
+        <h1>BİR SORUN ALGILANDI VE SİSTEM DURDURULDU</h1>
+        
+        <p>Görünüşe göre yetkiniz olmayan bir bölgeye (Giriş Yapılmamış Alan) erişmeye çalıştınız.</p>
+        
+        <p>Eğer bu hata ekranını ilk kez görüyorsanız, lütfen şu adımları takip edin:</p>
+        
+        <p>1. Hesabınızın olup olmadığını kontrol edin.<br/>
+           2. Eğer varsa, <a th:href="@{/Login/Index}" class="action-link">BURAYA TIKLAYARAK LOGIN OLUN</a>.<br/>
+           3. Eğer hesabınız yoksa, bir emlakçı hesabı oluşturmak için yönetici ile iletişime geçin.</p>
+        
+        <p>Teknik bilgi toplama süreci tamamlandı. Sistem şu an askıda bekliyor.</p>
+
+        <div class="technical-info">
+            <p>*** STOP: 0x00000403 (PROTECTION_FAULT_UNAUTHORIZED_ACCESS)</p>
+            <p>*** REALESTATE.SYS - Address FFFFF8000403403, DateStamp 20260426</p>
+        </div>
+
+        <p class="blink">Devam etmek için bir tuşa basın veya sayfayı yenileyin _</p>
+        
+        <div class="footer-msg">
+            <p>Hata Kodu: ACCESS_DENIED_BY_SECURITY_POLICY</p>
+        </div>
+    </div>
+</body>
+</html>

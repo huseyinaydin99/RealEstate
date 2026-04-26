@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Yeni Kategori Girişi</h6>
+                    <form th:action="@{/admin/categories/create}" th:object="${category}" method="post">
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label">Kategori Adı</label>
+                            <input type="text" th:field="*{categoryName}" class="form-control" id="categoryName">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

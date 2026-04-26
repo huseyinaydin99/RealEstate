@@ -19,13 +19,16 @@ public class DefaultController {
     private final PopularLocationService popularLocationService;
     private final BottomGridService bottomGridService;
 
-    public DefaultController(ProductService productService, WhoWeAreDetailService whoWeAreDetailService, ServiceService serviceService, TestimonialService testimonialService, PopularLocationService popularLocationService, BottomGridService bottomGridService) {
+    private final CategoryService categoryService;
+
+    public DefaultController(ProductService productService, WhoWeAreDetailService whoWeAreDetailService, ServiceService serviceService, TestimonialService testimonialService, PopularLocationService popularLocationService, BottomGridService bottomGridService, CategoryService categoryService) {
         this.productService = productService;
         this.whoWeAreDetailService = whoWeAreDetailService;
         this.serviceService = serviceService;
         this.testimonialService = testimonialService;
         this.popularLocationService = popularLocationService;
         this.bottomGridService = bottomGridService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping({"/", "/Default/Index", "/index"})
@@ -36,6 +39,8 @@ public class DefaultController {
                 .limit(3)
                 .collect(Collectors.toList());
 
+        model.addAttribute("categories", categoryService.getAllCategory());
+
         model.addAttribute("products", products);
         model.addAttribute("dealOfTheDayProducts", dealOfTheDayProducts);
         model.addAttribute("whoWeAreDetails", whoWeAreDetailService.getAllWhoWeAreDetail());
@@ -45,5 +50,15 @@ public class DefaultController {
         model.addAttribute("bottomGrids", bottomGridService.getAllBottomGrid());
 
         return "default/index";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "default/about";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "default/contact";
     }
 }

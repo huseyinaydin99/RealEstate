@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/default_layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Hakkımızda</title>
+</head>
+<body>
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a th:href="@{/}">Ana Sayfa</a></li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Hakkımızda</li>
+        </ul>
+    </div>
+</section>
+
+<section class="w3l-index3" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row">
+                <div class="col-lg-5 pr-lg-0">
+                    <div class="w3l-left-img">
+                    </div>
+                </div>
+                <div class="col-lg-7 pl-lg-0">
+                    <div class="detail-info">
+                        <h6 class="title-small">Bizi Tanıyın</h6>
+                        <h3 class="title-big">Gayrimenkul Sektöründe Güvenin Adresi</h3>
+                        <p class="mt-4">Uzun yıllardır sektördeki tecrübemizle, müşterilerimize en doğru yatırım fırsatlarını sunmak için çalışıyoruz. Hayalinizdeki evi bulmanızda profesyonel ekibimizle her zaman yanınızdayız.</p>
+                        <ul class="w3l-right-book mt-4">
+                            <li><span class="fa fa-check" aria-hidden="true"></span> Deneyimli ve Uzman Kadro</li>
+                            <li><span class="fa fa-check" aria-hidden="true"></span> Geniş Portföy Seçenekleri</li>
+                            <li><span class="fa fa-check" aria-hidden="true"></span> Şeffaf ve Güvenilir Hizmet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

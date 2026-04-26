@@ -35,10 +35,18 @@
             <div class="navbar-nav w-100">
                 <a th:href="@{/admin/dashboard}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a th:href="@{/admin/statistics}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>İstatistikler</a>
+                <a th:href="@{/Profile/Index}" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Ayarlar</a>
+                <div class="nav-item dropdown">
+                    <a href="#" style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-envelope me-2"></i>Mail İşlemleri</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a th:href="@{/messages/inbox}" class="dropdown-item">Gelen Kutusu</a>
+                        <a th:href="@{/messages/sendbox}" class="dropdown-item">Gönderilen Mesajlar</a>
+                    </div>
+                </div>
                 <a th:href="@{/admin/categories}" class="nav-item nav-link"><i class="fa fa-layer-group me-2"></i>Kategoriler</a>
                 <a th:href="@{/admin/products}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>İlanlar</a>
                 <a th:href="@{/admin/users}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Kullanıcılar</a>
-                <a th:href="@{/Profile/Index}" class="nav-item nav-link"><i class="fa fa-cog me-2"></i>Profil Ayarları</a>
+                <a th:href="@{/}" class="nav-item nav-link"><i class="fa fa-home me-2"></i>Siteye Git</a>
                 <a th:href="@{/logout}" class="nav-item nav-link"><i class="fa fa-times me-2"></i>Çıkış Yap</a>
             </div>
         </nav>

@@ -27,11 +27,18 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/Login/**").permitAll()
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers("/api/Categories/**").hasAnyRole("Admin", "Employee")
-                .requestMatchers("/api/Products/**").hasAnyRole("Admin", "Employee")
+                .requestMatchers("/api/Login/**", "/", "/index", "/Default/Index", "/about", "/contact").permitAll()
+                .requestMatchers("/property/**", "/Register/**", "/Login/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/lib/**", "/AdminPanel/**", "/RealEstatePanel/**").permitAll()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/error/**").permitAll()
+                .requestMatchers("/api/Categories/**", "/admin/categories/**").hasAnyRole("Admin", "Employee")
+                .requestMatchers("/api/Products/**", "/admin/products/**").hasAnyRole("Admin", "Employee")
+                .requestMatchers("/admin/statistics/**", "/admin/profile/**", "/Profile/**").authenticated()
+                .requestMatchers("/estateagent/**").hasAnyRole("Employee", "Manager")
                 .anyRequest().authenticated()
+            )
+            .exceptionHandling(exception -> exception
+                .accessDeniedPage("/error/403")
             )
             .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
