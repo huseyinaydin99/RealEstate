@@ -11,15 +11,14 @@ import tr.com.huseyinaydin.service.CategoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("api/categories")
 @RequiredArgsConstructor
 public class CategoriesController {
     private final CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<List<ResultCategoryDto>> categoryList() {
-        List<ResultCategoryDto> values = categoryService.getAllCategory();
-        return ResponseEntity.ok(values);
+        return ResponseEntity.ok(categoryService.getAllCategory());
     }
 
     @PostMapping
@@ -28,9 +27,9 @@ public class CategoriesController {
         return ResponseEntity.ok("Kategori başarılı bir şekilde eklendi.");
     }
 
-    @DeleteMapping("/{categoryId}")
-    public ResponseEntity<String> deleteCategory(@PathVariable int categoryId) {
-        categoryService.deleteCategory(categoryId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCategory(@PathVariable int id) {
+        categoryService.deleteCategory(id);
         return ResponseEntity.ok("Kategori başarılı bir şekilde silindi.");
     }
 
@@ -40,9 +39,8 @@ public class CategoriesController {
         return ResponseEntity.ok("Kategori başarılı bir şekilde güncellendi.");
     }
 
-    @GetMapping("/{categoryId}")
-    public ResponseEntity<ResultCategoryDto> getCategory(@PathVariable int categoryId) {
-        ResultCategoryDto value = categoryService.getCategory(categoryId);
-        return ResponseEntity.ok(value);
+    @GetMapping("/{id}")
+    public ResponseEntity<ResultCategoryDto> getCategory(@PathVariable int id) {
+        return ResponseEntity.ok(categoryService.getCategory(id));
     }
 }

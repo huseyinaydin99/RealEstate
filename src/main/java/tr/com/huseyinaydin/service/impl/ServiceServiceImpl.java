@@ -2,6 +2,8 @@ package tr.com.huseyinaydin.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tr.com.huseyinaydin.business.rules.ServiceBusinessRules;
+import tr.com.huseyinaydin.dto.service.CreateServiceDto;
 import tr.com.huseyinaydin.dto.service.ResultServiceDto;
 import tr.com.huseyinaydin.repository.ServiceRepository;
 import tr.com.huseyinaydin.service.ServiceService;
@@ -16,5 +18,16 @@ public class ServiceServiceImpl implements ServiceService {
     @Override
     public List<ResultServiceDto> getAllService() {
         return serviceRepository.getAllService();
+    }
+
+    @Override
+    public void createService(CreateServiceDto createServiceDto) {
+        ServiceBusinessRules.checkIfServiceNameIsNull(createServiceDto.getServiceName());
+        serviceRepository.createService(createServiceDto);
+    }
+
+    @Override
+    public void deleteService(int id) {
+        serviceRepository.deleteService(id);
     }
 }

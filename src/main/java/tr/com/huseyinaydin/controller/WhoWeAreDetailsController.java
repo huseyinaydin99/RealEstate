@@ -11,14 +11,13 @@ import tr.com.huseyinaydin.service.WhoWeAreDetailService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/whowearedetails")
+@RequestMapping("api/whowearedetails")
 @RequiredArgsConstructor
 public class WhoWeAreDetailsController {
     private final WhoWeAreDetailService whoWeAreDetailService;
 
     @GetMapping
     public ResponseEntity<List<ResultWhoWeAreDetailDto>> whoWeAreDetailList() {
-        List<ResultWhoWeAreDetailDto> values = whoWeAreDetailService.getAllWhoWeAreDetail();
-        return ResponseEntity.ok(values);
+        return ResponseEntity.ok(whoWeAreDetailService.getAllWhoWeAreDetail());
     }
 }

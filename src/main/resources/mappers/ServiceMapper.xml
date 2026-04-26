@@ -6,4 +6,12 @@
     <select id="getAllService" resultType="tr.com.huseyinaydin.dto.service.ResultServiceDto">
         Select * From Service
     </select>
+
+    <insert id="createService" parameterType="tr.com.huseyinaydin.dto.service.CreateServiceDto">
+        insert into Service (ServiceName, ServiceStatus) values (#{serviceName}, #{serviceStatus})
+    </insert>
+
+    <delete id="deleteService" parameterType="int">
+        Delete From Service Where ServiceID=#{id}
+    </delete>
 </mapper>

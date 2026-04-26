@@ -10,17 +10,18 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultProductWithCategoryDto {
-    private int productID;
+public class CreateProductDto {
     private String title;
     private BigDecimal price;
     private String city;
     private String district;
-    private String categoryName;
     private String coverImage;
-    private String type;
     private String address;
+    private String description;
+    private String type;
     private boolean dealOfTheDay;
+    private LocalDateTime advertisementDate;
     private boolean productStatus;
-    private String slugUrl;
+    private int productCategory;
+    private int appUserId;
 }

@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultServiceDto {
-    private int serviceID;
+public class CreateServiceDto {
     private String serviceName;
     private boolean serviceStatus;
 }

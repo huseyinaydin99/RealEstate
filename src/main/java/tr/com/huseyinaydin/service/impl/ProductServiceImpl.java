@@ -2,7 +2,8 @@ package tr.com.huseyinaydin.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tr.com.huseyinaydin.dto.product.ResultProductDto;
+import tr.com.huseyinaydin.business.rules.ProductBusinessRules;
+import tr.com.huseyinaydin.dto.product.CreateProductDto;
 import tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto;
 import tr.com.huseyinaydin.repository.ProductRepository;
 import tr.com.huseyinaydin.service.ProductService;
@@ -15,27 +16,28 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public List<ResultProductDto> getAllProductAsync() {
-        return productRepository.getAllProductAsync();
+    public List<ResultProductWithCategoryDto> getAllProductWithCategory() {
+        return productRepository.getAllProductWithCategory();
     }
 
     @Override
-    public List<ResultProductWithCategoryDto> getAllProductWithCategoryAsync() {
-        return productRepository.getAllProductWithCategoryAsync();
+    public void createProduct(CreateProductDto createProductDto) {
+        ProductBusinessRules.checkIfProductPriceIsNegative(createProductDto.getPrice());
+        productRepository.createProduct(createProductDto);
     }
 
     @Override
-    public void productDealOfTheDayStatusChangeToFalse(int id) {
-        productRepository.productDealOfTheDayStatusChangeToFalse(id);
+    public void deleteProduct(int id) {
+        productRepository.deleteProduct(id);
     }
 
     @Override
-    public void productDealOfTheDayStatusChangeToTrue(int id) {
-        productRepository.productDealOfTheDayStatusChangeToTrue(id);
+    public void productStatusChangeToTrue(int id) {
+        productRepository.productStatusChangeToTrue(id);
     }
 
     @Override
-    public List<ResultProductWithCategoryDto> getProductByDealOfTheDayTrueWithCategoryAsync() {
-        return productRepository.getProductByDealOfTheDayTrueWithCategoryAsync();
+    public void productStatusChangeToFalse(int id) {
+        productRepository.productStatusChangeToFalse(id);
     }
 }

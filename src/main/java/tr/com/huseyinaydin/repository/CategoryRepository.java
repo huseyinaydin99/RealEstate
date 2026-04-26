@@ -11,7 +11,7 @@ import java.util.List;
 public interface CategoryRepository {
     List<ResultCategoryDto> getAllCategory();
     void createCategory(CreateCategoryDto createCategoryDto);
-    void deleteCategory(int categoryId);
+    void deleteCategory(int id);
     void updateCategory(UpdateCategoryDto updateCategoryDto);
-    ResultCategoryDto getCategory(int categoryId);
+    ResultCategoryDto getCategory(int id);
 }

@@ -3,23 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tr.com.huseyinaydin.repository.ProductRepository">
-    <select id="getAllProductAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductDto">
-        Select * From Product where ProductStatus=1
+    <select id="getAllProductWithCategory" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
+        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay, ProductStatus, SlugUrl 
+        From Product inner join Category on Product.ProductCategory=Category.CategoryID 
+        where ProductStatus=1
     </select>
 
-    <select id="getAllProductWithCategoryAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
-        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay, ProductStatus, SlugUrl From Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductStatus=1
-    </select>
+    <insert id="createProduct" parameterType="tr.com.huseyinaydin.dto.product.CreateProductDto">
+        insert into Product (Title, Price, City, District, CoverImage, Address, Description, Type, DealOfTheDay, AdvertisementDate, ProductStatus, ProductCategory, AppUserId) 
+        values (#{title}, #{price}, #{city}, #{district}, #{coverImage}, #{address}, #{description}, #{type}, #{dealOfTheDay}, #{advertisementDate}, #{productStatus}, #{productCategory}, #{appUserId})
+    </insert>
 
-    <update id="productDealOfTheDayStatusChangeToFalse" parameterType="int">
-        Update Product set DealOfTheDay=0 where ProductID=#{id}
+    <delete id="deleteProduct" parameterType="int">
+        Delete From Product Where ProductID=#{id}
+    </delete>
+
+    <update id="productStatusChangeToTrue" parameterType="int">
+        Update Product set ProductStatus=1 where ProductID=#{id}
     </update>
 
-    <update id="productDealOfTheDayStatusChangeToTrue" parameterType="int">
-        Update Product set DealOfTheDay=1 where ProductID=#{id}
+    <update id="productStatusChangeToFalse" parameterType="int">
+        Update Product set ProductStatus=0 where ProductID=#{id}
     </update>
-
-    <select id="getProductByDealOfTheDayTrueWithCategoryAsync" resultType="tr.com.huseyinaydin.dto.product.ResultProductWithCategoryDto">
-        Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay From Product inner join Category on Product.ProductCategory=Category.CategoryID Where DealOfTheDay=1
-    </select>
 </mapper>

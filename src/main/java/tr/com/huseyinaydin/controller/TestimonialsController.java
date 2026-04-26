@@ -11,14 +11,13 @@ import tr.com.huseyinaydin.service.TestimonialService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/testimonials")
+@RequestMapping("api/testimonials")
 @RequiredArgsConstructor
 public class TestimonialsController {
     private final TestimonialService testimonialService;
 
     @GetMapping
     public ResponseEntity<List<ResultTestimonialDto>> testimonialList() {
-        List<ResultTestimonialDto> values = testimonialService.getAllTestimonial();
-        return ResponseEntity.ok(values);
+        return ResponseEntity.ok(testimonialService.getAllTestimonial());
     }
 }

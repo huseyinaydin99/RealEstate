@@ -12,7 +12,7 @@
     </insert>
 
     <delete id="deleteCategory" parameterType="int">
-        Delete From Category Where CategoryID=#{categoryId}
+        Delete From Category Where CategoryID=#{id}
     </delete>
 
     <update id="updateCategory" parameterType="tr.com.huseyinaydin.dto.category.UpdateCategoryDto">
@@ -20,6 +20,6 @@
     </update>
 
     <select id="getCategory" parameterType="int" resultType="tr.com.huseyinaydin.dto.category.ResultCategoryDto">
-        Select * From Category Where CategoryID=#{categoryId}
+        Select * From Category Where CategoryID=#{id}
     </select>
 </mapper>
