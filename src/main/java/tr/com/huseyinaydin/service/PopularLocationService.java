@@ -1,6 +1,5 @@
-package tr.com.huseyinaydin.repository;
+package tr.com.huseyinaydin.service;
 
-import org.apache.ibatis.annotations.Mapper;
 import tr.com.huseyinaydin.dto.popularlocation.CreatePopularLocationDto;
 import tr.com.huseyinaydin.dto.popularlocation.GetByIDPopularLocationDto;
 import tr.com.huseyinaydin.dto.popularlocation.ResultPopularLocationDto;
@@ -8,9 +7,8 @@ import tr.com.huseyinaydin.dto.popularlocation.UpdatePopularLocationDto;
 
 import java.util.List;
 
-@Mapper
-public interface PopularLocationRepository {
-    List<ResultPopularLocationDto> getAllPopularLocation();
+public interface PopularLocationService {
+    List<ResultPopularLocationDto> getAllPopularLocations();
     void createPopularLocation(CreatePopularLocationDto createPopularLocationDto);
     void deletePopularLocation(int id);
     void updatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto);

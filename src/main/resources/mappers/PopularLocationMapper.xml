@@ -6,4 +6,20 @@
     <select id="getAllPopularLocation" resultType="tr.com.huseyinaydin.dto.popularlocation.ResultPopularLocationDto">
         Select * From PopularLocation
     </select>
+
+    <insert id="createPopularLocation" parameterType="tr.com.huseyinaydin.dto.popularlocation.CreatePopularLocationDto">
+        insert into PopularLocation (CityName, ImageUrl, PropertyCount) values (#{cityName}, #{imageUrl}, #{propertyCount})
+    </insert>
+
+    <delete id="deletePopularLocation" parameterType="int">
+        Delete From PopularLocation Where LocationID=#{id}
+    </delete>
+
+    <update id="updatePopularLocation" parameterType="tr.com.huseyinaydin.dto.popularlocation.UpdatePopularLocationDto">
+        Update PopularLocation Set CityName=#{cityName}, ImageUrl=#{imageUrl}, PropertyCount=#{propertyCount} where LocationID=#{locationID}
+    </update>
+
+    <select id="getPopularLocationById" parameterType="int" resultType="tr.com.huseyinaydin.dto.popularlocation.GetByIDPopularLocationDto">
+        Select * From PopularLocation Where LocationID=#{id}
+    </select>
 </mapper>
