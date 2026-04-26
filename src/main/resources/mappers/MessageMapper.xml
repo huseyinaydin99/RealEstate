@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.MessageMapper">
+
+    <select id="getInBoxLast3MessageListByReceiver" resultType="tr.com.huseyinaydin.dto.message.ResultInBoxMessageDto">
+        SELECT TOP(3) MessageID, Name, Subject, Detail, SendDate, IsRead, UserImageUrl
+        FROM Message
+        INNER JOIN AppUser ON Message.Sender = AppUser.UserId
+        WHERE Receiver = #{id}
+        ORDER BY MessageID DESC
+    </select>
+
+    <select id="getAllMessageInBox" resultType="tr.com.huseyinaydin.dto.message.ResultInBoxMessageDto">
+        SELECT MessageID, Name, Subject, Detail, SendDate, IsRead, UserImageUrl
+        FROM Message
+        INNER JOIN AppUser ON Message.Sender = AppUser.UserId
+        WHERE Receiver = #{id}
+        ORDER BY SendDate DESC
+    </select>
+
+    <select id="getAllMessageSendBox" resultType="tr.com.huseyinaydin.dto.message.ResultSendBoxMessageDto">
+        SELECT MessageID, Name, Subject, Detail, SendDate, IsRead, UserImageUrl
+        FROM Message
+        INNER JOIN AppUser ON Message.Receiver = AppUser.UserId
+        WHERE Sender = #{id}
+        ORDER BY SendDate DESC
+    </select>
+
+    <insert id="createMessage">
+        INSERT INTO Message (Sender, Receiver, Subject, Detail, SendDate, IsRead)
+        VALUES (#{sender}, #{receiver}, #{subject}, #{detail}, #{sendDate}, #{isRead})
+    </insert>
+
+    <select id="getMessage" resultType="tr.com.huseyinaydin.dto.message.GetByIdMessageDto">
+        SELECT *
+        FROM Message
+        INNER JOIN AppUser ON Message.Sender = AppUser.UserId
+        WHERE MessageID = #{messageId}
+    </select>
+
+    <select id="findUserIdByEmail" resultType="java.lang.Integer">
+        SELECT UserId FROM AppUser WHERE Email = #{email}
+    </select>
+
+</mapper>

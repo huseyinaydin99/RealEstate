@@ -1,0 +1,11 @@
+CREATE TABLE Message (
+    MessageID INT AUTO_INCREMENT PRIMARY KEY,
+    Sender INT NOT NULL,
+    Receiver INT NOT NULL,
+    Subject VARCHAR(255),
+    Detail TEXT,
+    SendDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    IsRead BIT DEFAULT 0,
+    FOREIGN KEY (Sender) REFERENCES AppUser(UserId),
+    FOREIGN KEY (Receiver) REFERENCES AppUser(UserId)
+);
