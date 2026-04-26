@@ -1,0 +1,30 @@
+<div th:fragment="last5products" class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Son 5 İlan</h6>
+            <a href="/admin/product/index">Tümünü Gör</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">İlan Başlığı</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Fiyat</th>
+                        <th scope="col">Şehir</th>
+                        <th scope="col">Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${last5products}">
+                        <td th:text="${item.title}">Başlık</td>
+                        <td th:text="${item.categoryName}">Kategori</td>
+                        <td th:text="${item.price}">0</td>
+                        <td th:text="${item.city}">Şehir</td>
+                        <td><span th:class="${item.productStatus ? 'badge bg-success' : 'badge bg-danger'}" th:text="${item.productStatus ? 'Aktif' : 'Pasif'}">Durum</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

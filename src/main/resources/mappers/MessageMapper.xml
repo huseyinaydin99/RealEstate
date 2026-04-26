@@ -3,11 +3,12 @@
 <mapper namespace="tr.com.huseyinaydin.repository.MessageMapper">
 
     <select id="getInBoxLast3MessageListByReceiver" resultType="tr.com.huseyinaydin.dto.message.ResultInBoxMessageDto">
-        SELECT TOP(3) MessageID, Name, Subject, Detail, SendDate, IsRead, UserImageUrl
+        SELECT MessageID, Name, Subject, Detail, SendDate, IsRead, UserImageUrl
         FROM Message
         INNER JOIN AppUser ON Message.Sender = AppUser.UserId
         WHERE Receiver = #{id}
         ORDER BY MessageID DESC
+        LIMIT 3
     </select>
 
     <select id="getAllMessageInBox" resultType="tr.com.huseyinaydin.dto.message.ResultInBoxMessageDto">

@@ -1,0 +1,18 @@
+<div th:fragment="last3messages" class="container-fluid pt-4 px-4">
+    <div class="bg-light rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Son 3 Mesaj</h6>
+            <a href="/estateagent/messages/inbox">Tümünü Gör</a>
+        </div>
+        <div th:each="item : ${last3messages}" class="d-flex align-items-center border-bottom py-3">
+            <img class="rounded-circle flex-shrink-0" th:src="${item.userImageUrl}" alt="" style="width: 40px; height: 40px;">
+            <div class="w-100 ms-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-0" th:text="${item.name}">Gönderen</h6>
+                    <small th:text="${#temporals.format(item.sendDate, 'dd-MM-yyyy')}">Tarih</small>
+                </div>
+                <span th:text="${item.subject}">Konu</span>
+            </div>
+        </div>
+    </div>
+</div>
