@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tr.com.huseyinaydin.repository.AppUserRepository">
+
+    <select id="findByUserNameAndPassword" resultType="tr.com.huseyinaydin.model.AppUser">
+        SELECT * FROM AppUser WHERE UserName = #{username} AND Password = #{password}
+    </select>
+
+    <select id="findRoleByUserId" resultType="tr.com.huseyinaydin.model.AppRole">
+        SELECT ar.* FROM AppRole ar
+        INNER JOIN AppUser au ON au.UserRole = ar.RoleId
+        WHERE au.UserId = #{userId}
+    </select>
+
+    <insert id="createAppUser" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO AppUser (Name, UserName, Password, UserRole, Email, PhoneNumber, UserImageUrl)
+        VALUES (#{name}, #{userName}, #{password}, #{userRole}, #{email}, #{phoneNumber}, #{userImageUrl})
+    </insert>
+
+</mapper>
