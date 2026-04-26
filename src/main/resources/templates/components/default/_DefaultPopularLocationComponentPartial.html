@@ -1,0 +1,19 @@
+<section th:fragment="popularLocation" class="w3l-index3" id="locations">
+    <div class="midd-w3 py-5">
+        <div class="container pb-lg-5 pb-md-4 pb-2">
+            <h3 class="title-big text-center">Popüler Lokasyonlar</h3>
+            <div class="row mt-lg-5 mt-4">
+                <div th:each="location : ${popularLocations}" class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                    <div class="grids5-info">
+                        <a href="#" class="d-block zoom">
+                            <img th:src="${location.imageUrl}" th:alt="${location.cityName}" class="img-fluid news-image" style="height: 250px; width: 100%; object-fit: cover; border-radius: 8px;">
+                        </a>
+                        <div class="blog-info">
+                            <h4><a href="#" th:text="${location.cityName}">Şehir Adı</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

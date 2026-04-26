@@ -1,0 +1,28 @@
+<section th:fragment="discountOfDay" class="w3l-news" id="news">
+    <div class="grids5-block py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <h3 class="title-big text-center">Günün Fırsatları</h3>
+            <div class="row mt-lg-5 mt-4 pt-3">
+                <div th:each="item : ${dealOfTheDayProducts}" class="col-lg-4 col-md-6 mt-md-0 mt-sm-4">
+                    <div class="grids5-info">
+                        <span class="posted-date">
+                            <a th:href="@{'/property/' + ${item.productID}}">
+                                <span class="small" th:text="${#temporals.format(item.advertisementDate, 'yyyy')}">Yıl</span>
+                                <span class="big" th:text="${#temporals.format(item.advertisementDate, 'dd')}">Gün</span>
+                                <span class="small" th:text="${#temporals.format(item.advertisementDate, 'MMM')}">Ay</span>
+                            </a>
+                        </span>
+                        <a th:href="@{'/property/' + ${item.productID}}" class="d-block zoom">
+                            <img th:src="${item.coverImage}" alt="" style="height:250px; width: 100%; object-fit: cover;" class="img-fluid news-image" />
+                        </a>
+                        <div class="blog-info">
+                            <a th:href="@{'/property/' + ${item.productID}}" class="category" th:text="${item.categoryName}">Kategori</a>
+                            <h4><a th:href="@{'/property/' + ${item.productID}}" th:text="${item.title}">Başlık</a></h4>
+                            <p th:text="${#strings.length(item.description) > 100 ? #strings.substring(item.description, 0, 100) + '...' : item.description}">Açıklama</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

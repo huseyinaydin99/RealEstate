@@ -1,0 +1,24 @@
+<section th:fragment="productList" class="w3l-index3" id="products">
+    <div class="midd-w3 py-5">
+        <div class="container pb-lg-5 pb-md-4 pb-2">
+            <h3 class="title-big text-center">Öne Çıkan İlanlar</h3>
+            <div class="row mt-lg-5 mt-4">
+                <div th:each="product : ${products}" class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                    <div class="grids5-info">
+                        <a th:href="@{'/property/' + ${product.productID}}" class="d-block zoom">
+                            <img th:src="${product.coverImage}" th:alt="${product.title}" class="img-fluid news-image" style="height: 250px; width: 100%; object-fit: cover;">
+                        </a>
+                        <div class="blog-info">
+                            <span class="category" th:text="${product.categoryName}">Kategori</span>
+                            <h4><a th:href="@{'/property/' + ${product.productID}}" th:text="${product.title}">İlan Başlığı</a></h4>
+                            <p th:text="${product.city + ' / ' + product.district}">Şehir / Semt</p>
+                            <div class="price-tag">
+                                <span th:text="${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'COMMA') + ' ₺'}">Fiyat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,36 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:fragment="head">
+<html xmlns:th="http://www.thymeleaf.org" lang="tr" th:fragment="layout(title, content)">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>RealEstate - Hayalinizdeki Eve Bir Adım Uzaktasınız</title>
+    <title th:replace="${title}">RealEstate</title>
     <link rel="icon" type="image/png" th:href="@{/home.png}" />
     <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/RealEstatePanel/assets/css/style-starter.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style-starter.css}">
+    <style>
+        body {
+            color: #333 !important;
+            background-color: #fff !important;
+        }
+        .title-big {
+            color: #111 !important;
+            font-weight: 700 !important;
+        }
+        .text-center {
+            color: #222 !important;
+        }
+        p {
+            color: #444 !important;
+        }
+        .navbar-brand {
+            color: #000 !important;
+            font-weight: 700 !important;
+        }
+        .nav-link {
+            color: #222 !important;
+            font-weight: 500 !important;
+        }
+        .nav-link:hover {
+            color: #f93 !important;
+        }
+        .btn-primary {
+            background-color: #f93 !important;
+            border-color: #f93 !important;
+            color: #fff !important;
+        }
+        .btn-primary:hover {
+            background-color: #e82 !important;
+            border-color: #e82 !important;
+        }
+    </style>
 </head>
 <body>
-    <header id="site-header" class="fixed-top" th:fragment="navbar">
+    <header id="site-header" class="fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg stroke px-0">
                 <h1>
                     <a class="navbar-brand" th:href="@{/}">
-                        <span>Real</span>Estate
+                        <span style="color: #f93;">Real</span>Estate
                     </a>
                 </h1>
-                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                <button class="navbar-toggler collapsed bg-gradient" type="button" data-toggle="collapse"
                         data-target="#navbarExporter" aria-controls="navbarExporter" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
                     <span class="navbar-toggler-icon fa icon-close fa-times"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarExporter">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" th:href="@{/}">Ana Sayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/products}">İlanlar</a>
+                            <a class="nav-link" th:href="@{/property}">İlanlar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Giriş Yap</a>
                         </li>
                     </ul>
                 </div>
@@ -38,20 +76,38 @@
         </div>
     </header>
 
-    <div th:fragment="footer">
-        <section class="w3l-footer-29-main">
-            <div class="footer-29 py-5">
-                <div class="container py-lg-4">
-                    <p class="copy-footer-29 text-center">© 2026 RealEstate. Tüm Hakları Saklıdır.</p>
-                </div>
-            </div>
-        </section>
+    <div class="main-content">
+        <div th:replace="${content}"></div>
     </div>
 
-    <div th:fragment="scripts">
-        <script th:src="@{/RealEstatePanel/assets/js/jquery-3.3.1.min.js}"></script>
-        <script th:src="@{/RealEstatePanel/assets/js/theme-change.js}"></script>
-        <script th:src="@{/RealEstatePanel/assets/js/bootstrap.min.js}"></script>
-    </div>
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-1">
+                        <h6 class="footer-title-29">Hakkımızda</h6>
+                        <p>RealEstate olarak hayallerinizdeki evi bulmanız için en profesyonel hizmeti sunuyoruz.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-2">
+                        <h6 class="footer-title-29">Hızlı Bağlantılar</h6>
+                        <ul>
+                            <li><a th:href="@{/}">Ana Sayfa</a></li>
+                            <li><a th:href="@{/property}">İlanlar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-4">
+                        <h6 class="footer-title-29">İletişim</h6>
+                        <p>E-posta: info@realestate.com</p>
+                        <p>Telefon: +90 212 111 22 33</p>
+                    </div>
+                </div>
+                <p class="copy-footer-29 text-center mt-5">© 2026 RealEstate. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </section>
+
+    <script th:src="@{/assets/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/assets/js/theme-change.js}"></script>
+    <script th:src="@{/assets/js/bootstrap.min.js}"></script>
 </body>
 </html>

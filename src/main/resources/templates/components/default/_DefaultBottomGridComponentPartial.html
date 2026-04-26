@@ -1,0 +1,13 @@
+<section th:fragment="bottomGrid" class="w3l-bottom-grids py-5" id="steps">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <div class="grids-area-hny main-cont-wthree-fea row">
+            <div th:each="item : ${bottomGrids}" class="col-lg-4 col-md-6 grids-feature">
+                <div class="area-box no-box-shadow">
+                    <span th:class="${item.icon}"></span>
+                    <h4><a href="#feature" class="title-head" th:text="${item.title}">Başlık</a></h4>
+                    <p th:text="${item.description}">Açıklama</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

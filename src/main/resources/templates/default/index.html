@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/default_layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Ana Sayfa | RealEstate</title>
+</head>
+<body>
+<section>
+    <div th:replace="~{components/default/_DefaultBottomGridComponentPartial :: bottomGrid}"></div>
+    <div th:replace="~{components/default/_DefaultWhoWeAreComponentPartial :: whoWeAre}"></div>
+    <div th:replace="~{components/default/_DefaultPopularLocationComponentPartial :: popularLocation}"></div>
+    <div th:replace="~{components/default/_DefaultProductListComponentPartial :: productList}"></div>
+    <div th:replace="~{components/default/_DefaultDiscountOfDayComponentPartial :: discountOfDay}"></div>
+    <div th:replace="~{components/default/_DefaultTestimonialComponentPartial :: testimonial}"></div>
+</section>
+</body>
+</html>
