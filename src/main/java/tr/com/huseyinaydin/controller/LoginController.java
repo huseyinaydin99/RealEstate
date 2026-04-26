@@ -35,11 +35,11 @@ public class LoginController {
                 String redirectUrl = "";
 
                 if (role.getRoleName().equals("Admin")) {
-                    redirectUrl = "/Dashboard/Index";
+                    redirectUrl = "/admin/dashboard";
                 } else if (role.getRoleName().equals("Employee") || role.getRoleName().equals("Manager")) {
-                    redirectUrl = "/EstateAgent/Dashboard/Index";
+                    redirectUrl = "/estateagent/dashboard";
                 } else {
-                    redirectUrl = "/Default/Index";
+                    redirectUrl = "/default/index";
                 }
 
                 return ResponseEntity.ok(new LoginResponseDto(token, redirectUrl));

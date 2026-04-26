@@ -11,9 +11,12 @@ import tr.com.huseyinaydin.service.ProductImageService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ProductImageServiceImpl implements ProductImageService {
     private final ProductImageMapper productImageMapper;
+
+    public ProductImageServiceImpl(ProductImageMapper productImageMapper) {
+        this.productImageMapper = productImageMapper;
+    }
 
     @Override
     public List<GetProductImageByProductIdDto> getProductImageByProductId(int id) {
