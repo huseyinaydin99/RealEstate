@@ -24,12 +24,12 @@
                             </thead>
                             <tbody>
                                 <tr th:each="item : ${categories}">
-                                    <td th:text="${item.categoryID}"></td>
-                                    <td th:text="${item.categoryName}"></td>
-                                    <td th:text="${item.categoryStatus ? 'Aktif' : 'Pasif'}"></td>
+                                    <td th:text="${item.getCategoryID()}"></td>
+                                    <td th:text="${item.getCategoryName()}"></td>
+                                    <td th:text="${item.isCategoryStatus() ? 'Aktif' : 'Pasif'}"></td>
                                     <td>
-                                        <a class="btn btn-sm btn-danger" th:href="@{'/admin/categories/delete/' + ${item.categoryID}}">Sil</a>
-                                        <a class="btn btn-sm btn-primary" th:href="@{'/admin/categories/update/' + ${item.categoryID}}">Güncelle</a>
+                                        <a class="btn btn-sm btn-danger" th:href="@{'/admin/categories/delete/' + ${item.getCategoryID()}}">Sil</a>
+                                        <a class="btn btn-sm btn-primary" th:href="@{'/admin/categories/update/' + ${item.getCategoryID()}}">Güncelle</a>
                                     </td>
                                 </tr>
                             </tbody>

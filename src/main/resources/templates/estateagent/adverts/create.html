@@ -41,7 +41,7 @@
                         <div class="mb-3">
                             <label for="category" class="form-label">Kategori</label>
                             <select th:field="*{productCategory}" class="form-control" id="category">
-                                <option th:each="cat : ${categories}" th:value="${cat.categoryID}" th:text="${cat.categoryName}"></option>
+                                <option th:each="cat : ${categories}" th:value="${cat.getCategoryID()}" th:text="${cat.getCategoryName()}"></option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">İlanı Kaydet</button>

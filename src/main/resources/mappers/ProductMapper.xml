@@ -43,9 +43,18 @@
         Select ProductID, Title, Price, City, District, CategoryName, CoverImage, Type, Address, DealOfTheDay 
         From Product 
         inner join Category on Product.ProductCategory=Category.CategoryID 
-        Where Title like CONCAT('%', #{searchKeyValue}, '%') 
-        And ProductCategory=#{propertyCategoryId} 
-        And City=#{city}
+        <where>
+            <if test="searchKeyValue != null and searchKeyValue != ''">
+                And (Title like CONCAT('%', #{searchKeyValue}, '%') or Address like CONCAT('%', #{searchKeyValue}, '%'))
+            </if>
+            <if test="propertyCategoryId != 0">
+                And ProductCategory=#{propertyCategoryId}
+            </if>
+            <if test="city != null and city != ''">
+                And City=#{city}
+            </if>
+            And ProductStatus=TRUE
+        </where>
     </select>
 
     <select id="getProductByProductId" resultType="tr.com.huseyinaydin.dto.product.GetProductByProductIdDto">

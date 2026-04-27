@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/error/**").permitAll()
                 .requestMatchers("/api/Categories/**", "/admin/categories/**").hasAnyRole("Admin", "Employee")
                 .requestMatchers("/api/Products/**", "/admin/products/**").hasAnyRole("Admin", "Employee")
-                .requestMatchers("/admin/statistics/**", "/admin/profile/**", "/Profile/**").authenticated()
+                .requestMatchers("/admin/dashboard/**", "/admin/statistics/**", "/admin/profile/**", "/Profile/**").authenticated()
                 .requestMatchers("/estateagent/**").hasAnyRole("Employee", "Manager")
                 .anyRequest().authenticated()
             )

@@ -6,19 +6,19 @@
                 <div th:each="item : ${dealOfTheDayProducts}" class="col-lg-4 col-md-6 mt-md-0 mt-sm-4">
                     <div class="grids5-info">
                         <span class="posted-date">
-                            <a th:href="@{'/property/' + ${item.productID}}">
-                                <span class="small" th:text="${#temporals.format(item.advertisementDate, 'yyyy')}">Yıl</span>
-                                <span class="big" th:text="${#temporals.format(item.advertisementDate, 'dd')}">Gün</span>
-                                <span class="small" th:text="${#temporals.format(item.advertisementDate, 'MMM')}">Ay</span>
+                            <a th:href="@{'/property/' + ${item.getProductID()}}">
+                                <span class="small" th:text="${item.getAdvertisementDate() != null ? #temporals.format(item.getAdvertisementDate(), 'yyyy') : ''}">Yıl</span>
+                                <span class="big" th:text="${item.getAdvertisementDate() != null ? #temporals.format(item.getAdvertisementDate(), 'dd') : ''}">Gün</span>
+                                <span class="small" th:text="${item.getAdvertisementDate() != null ? #temporals.format(item.getAdvertisementDate(), 'MMM') : ''}">Ay</span>
                             </a>
                         </span>
-                        <a th:href="@{'/property/' + ${item.productID}}" class="d-block zoom">
-                            <img th:src="${item.coverImage}" alt="" style="height:250px; width: 100%; object-fit: cover;" class="img-fluid news-image" />
+                        <a th:href="@{'/property/' + ${item.getProductID()}}" class="d-block zoom">
+                            <img th:src="${item.getCoverImage()}" alt="" style="height:250px; width: 100%; object-fit: cover;" class="img-fluid news-image" />
                         </a>
                         <div class="blog-info">
-                            <a th:href="@{'/property/' + ${item.productID}}" class="category" th:text="${item.categoryName}">Kategori</a>
-                            <h4><a th:href="@{'/property/' + ${item.productID}}" th:text="${item.title}">Başlık</a></h4>
-                            <p th:text="${#strings.length(item.description) > 100 ? #strings.substring(item.description, 0, 100) + '...' : item.description}">Açıklama</p>
+                            <a th:href="@{'/property/' + ${item.getProductID()}}" class="category" th:text="${item.getCategoryName()}">Kategori</a>
+                            <h4><a th:href="@{'/property/' + ${item.getProductID()}}" th:text="${item.getTitle()}">Başlık</a></h4>
+                            <p th:text="${item.getDescription() != null && #strings.length(item.getDescription()) > 100 ? #strings.substring(item.getDescription(), 0, 100) + '...' : item.getDescription()}">Açıklama</p>
                         </div>
                     </div>
                 </div>

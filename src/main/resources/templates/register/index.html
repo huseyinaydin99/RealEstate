@@ -24,25 +24,25 @@
                             </a>
                             <h3>Kayıt Ol</h3>
                         </div>
-                        <form th:action="@{/Register/Index}" th:object="${appUser}" method="post">
+                        <form th:action="@{/Register/Index}" method="post">
                             <div class="form-floating mb-3">
-                                <input type="text" th:field="*{name}" class="form-control" id="floatingName" placeholder="Adınız" />
+                                <input type="text" name="name" class="form-control" id="floatingName" placeholder="Adınız" />
                                 <label for="floatingName">Adınız</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" th:field="*{userName}" class="form-control" id="floatingUserName" placeholder="Kullanıcı Adınız" />
+                                <input type="text" name="userName" class="form-control" id="floatingUserName" placeholder="Kullanıcı Adınız" />
                                 <label for="floatingUserName">Kullanıcı Adınız</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" th:field="*{password}" class="form-control" id="floatingPassword" placeholder="Şifreniz" />
+                                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Şifreniz" />
                                 <label for="floatingPassword">Şifreniz</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" th:field="*{email}" class="form-control" id="floatingEmail" placeholder="E-Mail" />
+                                <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="E-Mail" />
                                 <label for="floatingEmail">E-Mail</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" th:field="*{phoneNumber}" class="form-control" id="floatingPhone" placeholder="Telefon Numarası" />
+                                <input type="text" name="phoneNumber" class="form-control" id="floatingPhone" placeholder="Telefon Numarası" />
                                 <label for="floatingPhone">Telefon Numarası</label>
                             </div>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Kayıt Ol</button>

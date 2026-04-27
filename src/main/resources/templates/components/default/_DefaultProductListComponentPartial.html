@@ -6,13 +6,13 @@
             </div>
             <div class="row pt-md-5 pt-4">
                 <div th:each="product : ${products}" class="col-lg-4 col-md-6 mb-3">
-                    <a th:href="@{'/property/' + ${product.productID}}">
+                    <a th:href="@{'/property/' + ${product.getProductID()}}">
                         <div class="box16">
-                            <div class="rentext-listing-category"><span th:text="${product.type}">Tür</span><span th:text="${product.categoryName}">Kategori</span></div>
-                            <img class="img-fluid" style="height:200px;width:700px" th:src="${product.coverImage}" alt="">
+                            <div class="rentext-listing-category"><span th:text="${product.getType()}">Tür</span><span th:text="${product.getCategoryName()}">Kategori</span></div>
+                            <img class="img-fluid" style="height:200px;width:700px" th:src="${product.getCoverImage()}" alt="">
                             <div class="box-content">
-                                <h3 class="title" th:text="'₺ ' + ${#numbers.formatDecimal(product.price, 0, 'POINT', 0, 'COMMA')}">Fiyat</h3>
-                                <span class="post" th:text="${product.address + ' ' + product.district + ' - ' + product.city}">Adres</span>
+                                <h3 class="title" th:text="'₺ ' + ${#numbers.formatDecimal(product.getPrice(), 0, 'POINT', 0, 'COMMA')}">Fiyat</h3>
+                                <span class="post" th:text="${product.getAddress() + ' ' + product.getDistrict() + ' - ' + product.getCity()}">Adres</span>
                             </div>
                         </div>
                     </a>

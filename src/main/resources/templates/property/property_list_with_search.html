@@ -15,13 +15,13 @@
             <div class="row pt-md-5 pt-4">
                 <th:block th:if="${not #lists.isEmpty(products)}">
                     <div class="col-lg-4 col-md-6 mb-3" th:each="item : ${products}">
-                        <a th:href="@{/property/{id}(id=${item.productID})}">
+                        <a th:href="@{/property/{id}(id=${item.getProductID()})}">
                             <div class="box16">
-                                <div class="rentext-listing-category"><span th:text="${item.type}"></span><span th:text="${item.categoryName}"></span></div>
-                                <img class="img-fluid" style="height:200px;width:700px" th:src="${item.coverImage}" alt="">
+                                <div class="rentext-listing-category"><span th:text="${item.getType()}"></span><span th:text="${item.getCategoryName()}"></span></div>
+                                <img class="img-fluid" style="height:200px;width:700px" th:src="${item.getCoverImage()}" alt="">
                                 <div class="box-content">
-                                    <h3 class="title">₺ <span th:text="${item.price}"></span></h3>
-                                    <span class="post" th:text="${item.address + ' ' + item.district + ' - ' + item.city}"></span>
+                                    <h3 class="title">₺ <span th:text="${item.getPrice()}"></span></h3>
+                                    <span class="post" th:text="${item.getAddress() + ' ' + item.getDistrict() + ' - ' + item.getCity()}"></span>
                                 </div>
                             </div>
                         </a>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Toplam İlan</p>
+                                <h6 class="mb-0" th:text="${productCount}">0</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Kategori Sayısı</p>
+                                <h6 class="mb-0" th:text="${categoryCount}">0</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Aktif Personel</p>
+                                <h6 class="mb-0" th:text="${activeEmployeeCount}">0</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Şehir Sayısı</p>
+                                <h6 class="mb-0" th:text="${differentCityCount}">0</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Yapılacaklar Listesi</h6>
+                            </div>
+                            <div th:each="item : ${toDoList}" class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox" th:checked="${item.toDoListStatus}">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span th:text="${item.description}">Görev</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-8">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Son 5 İlan</h6>
+                                <a th:href="@{/admin/products}">Hepsini Gör</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                    <thead>
+                                        <tr class="text-dark">
+                                            <th scope="col">Başlık</th>
+                                            <th scope="col">Kategori</th>
+                                            <th scope="col">Fiyat</th>
+                                            <th scope="col">Şehir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="product : ${last5Products}">
+                                            <td th:text="${product.getTitle()}">Başlık</td>
+                                            <td th:text="${product.getCategoryName()}">Kategori</td>
+                                            <td th:text="${product.getPrice()}">0</td>
+                                            <td th:text="${product.getCity()}">Şehir</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

@@ -10,13 +10,13 @@
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Kategori Güncelleme Sayfası</h6>
                     <form th:action="@{/admin/categories/update}" th:object="${category}" method="post">
-                        <input type="hidden" th:field="*{categoryID}">
+                        <input type="hidden" name="categoryID" th:value="${category.getCategoryID()}">
                         <div class="mb-3">
                             <label for="categoryName" class="form-label">Kategori Adı</label>
-                            <input type="text" th:field="*{categoryName}" class="form-control" id="categoryName">
+                            <input type="text" name="categoryName" th:value="${category.getCategoryName()}" class="form-control" id="categoryName">
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" th:field="*{categoryStatus}" class="form-check-input" id="categoryStatus">
+                            <input type="checkbox" name="categoryStatus" th:checked="${category.isCategoryStatus()}" class="form-check-input" id="categoryStatus">
                             <label class="form-check-label" for="categoryStatus">Durum</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Güncelle</button>

@@ -10,37 +10,37 @@
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Profil Bilgilerim</h6>
                     <form th:action="@{/Profile/Update}" th:object="${profile}" method="post">
-                        <input type="hidden" th:field="*{userId}" />
-                        <input type="hidden" th:field="*{userRole}" />
+                        <input type="hidden" name="userId" th:value="${profile.getUserId()}" />
+                        <input type="hidden" name="userRole" th:value="${profile.getUserRole()}" />
                         
                         <div class="mb-3">
                             <label class="form-label">Adı</label>
-                            <input type="text" th:field="*{name}" class="form-control" />
+                            <input type="text" name="name" th:value="${profile.getName()}" class="form-control" />
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Kullanıcı Adı</label>
-                            <input type="text" th:field="*{userName}" class="form-control" />
+                            <input type="text" name="userName" th:value="${profile.getUserName()}" class="form-control" />
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Şifre</label>
-                            <input type="text" th:field="*{password}" class="form-control" />
+                            <input type="text" name="password" th:value="${profile.getPassword()}" class="form-control" />
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">E-Mail</label>
-                            <input type="email" th:field="*{email}" class="form-control" />
+                            <input type="email" name="email" th:value="${profile.getEmail()}" class="form-control" />
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Telefon Numarası</label>
-                            <input type="tel" th:field="*{phoneNumber}" class="form-control" />
+                            <input type="tel" name="phoneNumber" th:value="${profile.getPhoneNumber()}" class="form-control" />
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Görsel Url</label>
-                            <input type="text" th:field="*{userImageUrl}" class="form-control" />
+                            <input type="text" name="userImageUrl" th:value="${profile.getUserImageUrl()}" class="form-control" />
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Bilgilerimi Kaydet</button>
