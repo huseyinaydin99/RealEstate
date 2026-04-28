@@ -28,67 +28,123 @@
         <div class="inner mb-4">
             <ul class="blog-single-author-date align-items-center">
                 <li>
-                    <div class="listing-category"><span th:text="${type}"></span></div>
+                    <div class="listing-category"><span th:text="${type}" class="badge badge-primary px-3 py-2" style="background: #f35e0a;"></span></div>
                 </li>
                 <li><span class="fa fa-clock-o"></span> Yaklaşık <span th:text="${datediff}"></span> Gün Önce İlana Eklendi.</li>
                 <li><span class="fa fa-eye"></span> 250 kişi bu ilanı görüntüledi.</li>
             </ul>
         </div>
-        <div class="post-content">
-            <h2 class="title-single" th:text="${title1}"></h2>
+
+        <!-- Üst Bölüm: Slider ve Hızlı Bilgi Kartı (Tam Genişlikte) -->
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div th:replace="~{components/property/_PropertySliderComponentPartial}"></div>
+            </div>
+            <div class="col-lg-5 mt-lg-0 mt-4">
+                <div class="blo-singl p-4 bg-white shadow-sm rounded h-100 d-flex flex-column justify-content-between border-top border-primary" style="border-top-width: 4px !important;">
+                    <div>
+                        <div class="listing-category mb-3">
+                            <span th:text="${type}" class="badge badge-primary px-3 py-2" style="background: #f35e0a; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;"></span>
+                        </div>
+                        <h2 class="title-single mb-3" th:text="${title1}" style="font-weight: 700; color: #333; font-size: 26px; line-height: 1.2;"></h2>
+                        <p class="text-muted mb-4"><span class="fa fa-map-marker mr-2" style="color: #f35e0a;"></span><span th:text="${address}"></span> <span th:text="${district}"></span> / <span th:text="${city}"></span></p>
+                        
+                                    <div class="quick-info border-top pt-4">
+                                        <div class="row text-center no-gutters">
+                                            <div class="col-4 border-right">
+                                                <span class="fa fa-bed d-block mb-2" style="color: #f35e0a; font-size: 24px;"></span>
+                                                <small class="text-muted d-block mb-1" style="font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Yatak Odası</small>
+                                                <strong th:text="${bedCount}" style="font-size: 22px;"></strong>
+                                            </div>
+                                            <div class="col-4 border-right">
+                                                <span class="fa fa-bath d-block mb-2" style="color: #f35e0a; font-size: 24px;"></span>
+                                                <small class="text-muted d-block mb-1" style="font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">Banyo</small>
+                                                <strong th:text="${bathCount}" style="font-size: 22px;"></strong>
+                                            </div>
+                                            <div class="col-4">
+                                                <span class="fa fa-share-square-o d-block mb-2" style="color: #f35e0a; font-size: 24px;"></span>
+                                                <small class="text-muted d-block mb-1" style="font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;">m²</small>
+                                                <strong th:text="${size}" style="font-size: 22px;"></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div>
+                    
+                    <div class="price-section mt-4 pt-4 border-top">
+                        <p class="text-muted mb-1" style="font-size: 15px;">Satış Fiyatı</p>
+                        <h3 class="cost-estate m-0" style="font-size: 36px; font-weight: 800; color: #f35e0a;">₺ <span th:text="${#numbers.formatDecimal(price, 0, 'WHITESPACE', 0, 'POINT')}"></span></h3>
+                        <button class="btn btn-primary btn-block mt-4 py-3 contact-btn" style="background: #f35e0a; border-color: #f35e0a; font-weight: 700; border-radius: 8px; font-size: 18px;">
+                            <span class="fa fa-phone mr-2"></span> Hemen Arayın
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="blo-singl mb-4">
-            <ul class="blog-single-author-date align-items-center">
-                <li>
-                    <p><span th:text="${address}"></span> <span th:text="${district}"></span> / <span th:text="${city}"></span></p>
-                </li>
-                <li><span class="fa fa-bed"></span> <span th:text="${bedCount}"></span> Yatak Odası</li>
-                <li><span class="fa fa-bath"></span> <span th:text="${bathCount}"></span> Banyo</li>
-                <li><span class="fa fa-share-square-o"></span> <span th:text="${size}"></span> metrekare</li>
-            </ul>
-            <ul class="share-post">
-                <a href="#url" class="cost-estate m-o">₺ <span th:text="${price}"></span></a>
-            </ul>
-        </div>
+
         <div class="row">
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
-                    <div th:replace="~{components/property/_PropertySliderComponentPartial}"></div>
-                    <div class="single-post-content">
+
+                    <style>
+                        .contact-btn:hover {
+                            background: #d45208 !important;
+                            border-color: #d45208 !important;
+                            transform: translateY(-2px);
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 12px rgba(243, 94, 10, 0.3);
+                        }
+                        .hover-primary:hover {
+                            color: #f35e0a !important;
+                        }
+                        .blo-singl {
+                            transition: all 0.3s ease;
+                        }
+                        .blo-singl:hover {
+                            box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+                        }
+                        .quick-info strong {
+                            font-size: 18px;
+                            color: #333;
+                        }
+                    </style>
+
+                    <div class="single-post-content mt-5">
                         <h3 class="post-content-title mb-3">İlan Açıklaması</h3>
                         <p class="mb-4" th:text="${description}">
                         </p>
-                        <div class="single-bg-white">
+                        <div class="single-bg-white p-4 shadow-sm rounded mb-4">
                             <h3 class="post-content-title mb-4">İlan Detayları</h3>
-                            <ul class="details-list">
-                                <li><strong>Metrekare :</strong> <span th:text="${size}"></span></li>
-                                <li><strong>Oda Sayısı :</strong> <span th:text="${roomCount}"></span></li>
-                                <li><strong>Yatak Odası :</strong> <span th:text="${bedCount}"></span></li>
-                                <li><strong>Banyo Sayısı :</strong> <span th:text="${bathCount}"></span></li>
-                                <li><strong>Yapı Türü :</strong> Beton </li>
-                                <li><strong>Garaj Sayısı :</strong> <span th:text="${garageCount}"></span></li>
-                                <li><strong>Fiyat :</strong> <span th:text="${price}"></span> ₺ </li>
-                                <li><strong>Yapım Yılı :</strong> <span th:text="${buildYear}"></span></li>
-                                <li><strong>İlan Tarihi :</strong> <span th:text="${#temporals.format(date, 'dd-MMM-yyyy')}"></span></li>
+                            <ul class="details-list row">
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-expand mr-2"></span>Metrekare :</strong> <span th:text="${size}"></span> m²</li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-th-large mr-2"></span>Oda Sayısı :</strong> <span th:text="${roomCount}"></span></li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-bed mr-2"></span>Yatak Odası :</strong> <span th:text="${bedCount}"></span></li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-bath mr-2"></span>Banyo Sayısı :</strong> <span th:text="${bathCount}"></span></li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-building mr-2"></span>Yapı Türü :</strong> Beton </li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-car mr-2"></span>Garaj Sayısı :</strong> <span th:text="${garageCount}"></span></li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-tag mr-2"></span>Fiyat :</strong> <span th:text="${#numbers.formatDecimal(price, 0, 'WHITESPACE', 0, 'POINT')}"></span> ₺ </li>
+                                <li class="col-sm-6 mb-2"><strong><span class="fa fa-calendar mr-2"></span>Yapım Yılı :</strong> <span th:text="${buildYear}"></span></li>
+                                <li class="col-sm-12"><strong><span class="fa fa-clock-o mr-2"></span>İlan Tarihi :</strong> <span th:text="${#temporals.format(date, 'dd MMMM yyyy')}"></span></li>
                             </ul>
                         </div>
                         <div th:replace="~{components/property/_PropertyAmenityStatusTrueByPropertyIdComponentPartial}"></div>
                     </div>
-                    <div class="single-bg-white">
+                    <div class="single-bg-white p-4 shadow-sm rounded mb-4">
                         <h3 class="post-content-title mb-4">Lokasyon</h3>
                         <div class="agent-map">
-                            <iframe th:src="${location}"></iframe>
+                            <iframe th:src="${location}" style="border:0; width: 100%; height: 400px; border-radius: 10px;"></iframe>
                         </div>
                     </div>
-                    <div class="single-bg-white mb-0">
+                    <div class="single-bg-white p-4 shadow-sm rounded mb-0">
                         <h3 class="post-content-title mb-4">Ev Tanıtım Videosu</h3>
                         <div class="post-content">
-                            <iframe th:src="${videoUrl}" frameborder="0" allowfullscreen=""></iframe>
+                            <iframe th:src="${videoUrl}" frameborder="0" allowfullscreen="" style="width: 100%; height: 450px; border-radius: 10px;"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-            <div th:replace="~{components/property/_PropertyAppUserComponentPartial}"></div>
+            <div class="col-lg-4 mt-lg-0 mt-5">
+                <div th:replace="~{components/property/_PropertyAppUserComponentPartial}"></div>
+            </div>
         </div>
     </div>
 </section>

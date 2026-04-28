@@ -1,9 +1,96 @@
 <div xmlns:th="http://www.thymeleaf.org">
     <div class="blo-singl mb-4">
         <div id="owl-demo" class="owl-carousel owl-theme">
+            <div class="item" th:if="${#lists.isEmpty(productImages)}">
+                <img src="/RealEstatePanel/images/1.jpg" 
+                     class="img-fluid rounded" 
+                     style="height: 500px; object-fit: cover; width: 100%;"
+                     alt="Varsayılan Görsel">
+            </div>
             <div class="item" th:each="image : ${productImages}">
-                <img th:src="${image.imageUrl}" class="img-fluid" alt="İlan Görseli">
+                <img th:src="${(image.imageUrl != null && image.imageUrl.startsWith('http')) ? image.imageUrl : ( (image.imageUrl != null && image.imageUrl.startsWith('/')) ? image.imageUrl : '/ProductImageFiles/' + image.imageUrl)}" 
+                     class="img-fluid rounded" 
+                     style="height: 500px; object-fit: cover; width: 100%;"
+                     alt="İlan Görseli">
             </div>
         </div>
     </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function initOwlSlider() {
+            var $owl = $("#owl-demo");
+            if ($owl.length > 0) {
+                $owl.owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    navText: ["<span class='fa fa-angle-left'></span>", "<span class='fa fa-angle-right'></span>"],
+                    responsive: {
+                        0: { items: 1 },
+                        600: { items: 1 },
+                        1000: { items: 1 }
+                    }
+                });
+            }
+        }
+
+        if (typeof jQuery !== 'undefined') {
+            $(document).ready(function () {
+                initOwlSlider();
+            });
+        } else {
+            window.addEventListener('load', function() {
+                if (typeof jQuery !== 'undefined') {
+                    $(document).ready(function () {
+                        initOwlSlider();
+                    });
+                }
+            });
+        }
+        /*]]>*/
+    </script>
+    
+    <style>
+        .blo-singl {
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #owl-demo .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7) !important;
+            width: 40px;
+            height: 40px;
+            border-radius: 50% !important;
+            color: #333 !important;
+            font-size: 20px !important;
+            transition: 0.3s;
+        }
+        #owl-demo .owl-nav button:hover {
+            background: #f35e0a !important;
+            color: #fff !important;
+        }
+        #owl-demo .owl-nav .owl-prev { left: 20px; }
+        #owl-demo .owl-nav .owl-next { right: 20px; }
+        #owl-demo .owl-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #owl-demo .owl-dot span {
+            width: 12px !important;
+            height: 12px !important;
+            background: rgba(255, 255, 255, 0.5) !important;
+        }
+        #owl-demo .owl-dot.active span {
+            background: #f35e0a !important;
+        }
+    </style>
 </div>
