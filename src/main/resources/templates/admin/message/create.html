@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-white shadow-sm rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Mesaj Oluşturma Sayfası</h6>
+                    </div>
+                    <form th:action="@{/messages/create}" th:object="${createMessageDto}" method="post">
+                        <div class="mb-3 text-start">
+                            <label for="receiverEmail" class="form-label text-muted">Alıcı E-Mail</label>
+                            <input type="email" class="form-control" id="receiverEmail" th:field="*{receiverEmail}" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="subject" class="form-label text-muted">Konu</label>
+                            <input type="text" class="form-control" id="subject" th:field="*{subject}" required>
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="detail" class="form-label text-muted">Mesaj İçeriği:</label>
+                            <textarea class="form-control" id="detail" th:field="*{detail}" rows="8" required></textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-info text-white px-4">Gönder</button>
+                            <a href="/messages/inbox" class="btn btn-secondary px-4">
+                                <i class="fas fa-arrow-left me-1"></i> Geri
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

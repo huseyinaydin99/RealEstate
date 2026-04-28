@@ -39,6 +39,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" style="color:black;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-envelope me-2"></i>Mail İşlemleri</a>
                     <div class="dropdown-menu bg-transparent border-0">
+                        <a th:href="@{/messages/create}" class="dropdown-item">Yeni Mesaj Oluştur</a>
                         <a th:href="@{/messages/inbox}" class="dropdown-item">Gelen Kutusu</a>
                         <a th:href="@{/messages/sendbox}" class="dropdown-item">Gönderilen Mesajlar</a>
                     </div>

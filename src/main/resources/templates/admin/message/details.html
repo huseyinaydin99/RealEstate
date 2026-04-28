@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/admin_layout :: head}"></head>
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <div th:replace="~{layout/admin_layout :: sidebar}"></div>
+        <div class="content">
+            <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-white shadow-sm rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Mesaj Detayları</h6>
+                        <a href="javascript:history.back()" class="btn btn-secondary">Geri Dön</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Gönderen/Alıcı:</label>
+                                <p th:text="${message.name}">İsim</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Konu:</label>
+                                <p th:text="${message.subject}">Konu</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Tarih:</label>
+                                <p th:text="${#temporals.format(message.sendDate, 'dd.MM.yyyy HH:mm')}">Tarih</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Mesaj:</label>
+                                <div class="p-3 border rounded bg-light" th:text="${message.detail}">
+                                    Mesaj içeriği buraya gelecek.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:replace="~{layout/admin_layout :: footer}"></div>
+        </div>
+    </div>
+    <div th:replace="~{layout/admin_layout :: scripts}"></div>
+</body>
+</html>

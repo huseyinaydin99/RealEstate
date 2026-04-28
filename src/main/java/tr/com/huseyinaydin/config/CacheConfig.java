@@ -12,6 +12,6 @@ public class CacheConfig {
 
     @Bean
     public CacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("categories", "products", "services", "testimonials", "messages", "statistics", "popularLocations");
+        return new ConcurrentMapCacheManager("categories", "products", "services", "testimonials", "messages", "statistics", "popularLocations", "inbox", "sendbox", "last3messages");
     }
 }
