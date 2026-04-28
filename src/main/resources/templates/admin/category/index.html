@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/admin_layout :: head}"></head>
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
+    <div class="container-fluid position-relative d-flex p-0">
         <div th:replace="~{layout/admin_layout :: sidebar}"></div>
         <div class="content">
             <nav th:replace="~{layout/admin_layout :: navbar}"></nav>
             <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4">
+                <div class="bg-white text-center rounded p-4 shadow-sm">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Kategori Listesi</h6>
                         <a th:href="@{/admin/categories/create}" class="btn btn-primary">Yeni Kategori Ekle</a>
